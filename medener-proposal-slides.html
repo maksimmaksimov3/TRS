@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MEDENER – Communication Support Services | The Right Street</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── RESET & BASE ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:   #141414;
+      --red:     #C0312A;
+      --red-dk:  #8C1F1A;
+      --red-lt:  #D9A09C;
+      --white:   #FFFFFF;
+      --grey:    #A0A0A0;
+      --grey-lt: #D0D0D0;
+      --slide-w: 1280px;
+      --slide-h: 720px;
+    }
+
+    html, body {
+      background: #0a0a0a;
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--white);
+      height: 100%;
+    }
+
+    /* ─── DECK WRAPPER ─────────────────────────────────────────────── */
+    .deck {
+      position: relative;
+      width: 100%;
+    }
+
+    /* ─── SLIDE BASE ───────────────────────────────────────────────── */
+    .slide {
+      display: none;
+      position: relative;
+      width: var(--slide-w);
+      height: var(--slide-h);
+      background: var(--black);
+      overflow: hidden;
+      margin: 0 auto;
+    }
+    .slide.active { display: flex; }
+
+    /* ─── LOGO (top-right) ─────────────────────────────────────────── */
+    .logo {
+      position: absolute;
+      top: 28px;
+      right: 32px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--red);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .logo-icon svg { width: 22px; height: 22px; }
+    .logo-text {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      line-height: 1.4;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+
+    /* ─── SLIDE LABEL (top-left) ───────────────────────────────────── */
+    .slide-label {
+      position: absolute;
+      top: 36px;
+      left: 56px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+
+    /* ─── SLIDE CONTENT AREA ───────────────────────────────────────── */
+    .slide-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 88px 56px 52px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── SECTION HEADING STYLE ────────────────────────────────────── */
+    .section-title {
+      font-size: 52px;
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      margin-bottom: 36px;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+    .section-title em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--white);
+    }
+
+    /* ─── BODY TEXT ────────────────────────────────────────────────── */
+    p { font-size: 13.5px; font-weight: 400; line-height: 1.65; color: var(--grey-lt); }
+    p + p { margin-top: 10px; }
+
+    /* ─── TWO-COL LAYOUT ───────────────────────────────────────────── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      flex: 1;
+    }
+    .three-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 28px;
+      flex: 1;
+    }
+    .col { display: flex; flex-direction: column; gap: 10px; }
+
+    /* ─── COLUMN HEADING ───────────────────────────────────────────── */
+    .col-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    /* ─── CARD ─────────────────────────────────────────────────────── */
+    .card {
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 14px;
+      padding: 28px 26px;
+      background: rgba(255,255,255,0.03);
+    }
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    .card p { font-size: 12.5px; }
+
+    /* ─── PHASE CARD ───────────────────────────────────────────────── */
+    .phase-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: var(--red);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    /* ─── RED HIGHLIGHT QUOTE ──────────────────────────────────────── */
+    .red-quote {
+      margin-top: auto;
+      padding-top: 24px;
+      font-size: 18px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 1.35;
+      text-align: center;
+      color: var(--white);
+    }
+    .red-quote span { color: var(--red); }
+
+    /* ─── TABLE ────────────────────────────────────────────────────── */
+    .tbl-wrap { flex: 1; overflow: hidden; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11.5px;
+    }
+    thead th {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--grey);
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      padding: 8px 12px;
+      text-align: left;
+    }
+    tbody td {
+      padding: 12px 12px;
+      vertical-align: top;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      color: var(--grey-lt);
+      line-height: 1.55;
+    }
+    tbody tr:first-child td { padding-top: 14px; }
+    .td-option {
+      font-weight: 700;
+      color: var(--white);
+      white-space: nowrap;
+      font-size: 13px;
+    }
+    .td-price {
+      font-weight: 700;
+      color: var(--red);
+      white-space: nowrap;
+      font-size: 14px;
+    }
+    .td-time {
+      font-weight: 600;
+      color: var(--white);
+      white-space: nowrap;
+    }
+
+    /* ─── BULLET LIST ──────────────────────────────────────────────── */
+    ul.bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    ul.bullets li {
+      font-size: 13px;
+      color: var(--grey-lt);
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.5;
+    }
+    ul.bullets li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--red);
+    }
+
+    /* ─── NUMBERED LIST ────────────────────────────────────────────── */
+    ol.numbered {
+      list-style: none;
+      counter-reset: item;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    ol.numbered li {
+      counter-increment: item;
+      font-size: 13px;
+      color: var(--grey-lt);
+      padding-left: 22px;
+      position: relative;
+      line-height: 1.5;
+    }
+    ol.numbered li::before {
+      content: counter(item) ".";
+      position: absolute;
+      left: 0;
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    /* ─── TAG / PILL ───────────────────────────────────────────────── */
+    .pill {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 100px;
+      padding: 6px 18px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    /* ─── DIVIDER ──────────────────────────────────────────────────── */
+    .divider { width: 48px; height: 3px; background: var(--red); margin: 14px 0 18px; border-radius: 2px; }
+
+    /* ─── TIMELINE TABLE ───────────────────────────────────────────── */
+    .tl-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .tl-table thead th {
+      font-size: 9.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--grey);
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      padding: 6px 10px;
+      text-align: left;
+    }
+    .tl-table tbody td {
+      padding: 9px 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      color: var(--grey-lt);
+      vertical-align: middle;
+    }
+    .tl-milestone { font-weight: 500; }
+    .tl-week {
+      font-weight: 700;
+      color: var(--red);
+      white-space: nowrap;
+      font-size: 11px;
+    }
+    .week-bar {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+    .week-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--red);
+      opacity: 0.5;
+      flex-shrink: 0;
+    }
+    .week-dot.active { opacity: 1; }
+
+    /* ─── EXPERIENCE GRID ──────────────────────────────────────────── */
+    .exp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      flex: 1;
+    }
+    .exp-card {
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 22px 22px;
+      background: rgba(255,255,255,0.02);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .exp-client {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .exp-project {
+      font-size: 12px;
+      color: var(--red);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .exp-desc {
+      font-size: 12px;
+      color: var(--grey);
+      line-height: 1.5;
+      margin-top: 4px;
+    }
+
+    /* ─── NAVIGATION ───────────────────────────────────────────────── */
+    #nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 18px;
+      background: #0a0a0a;
+    }
+    #nav button {
+      background: var(--red);
+      border: none;
+      color: var(--white);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 10px 28px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    #nav button:hover { background: #a02420; }
+    #nav button:disabled { background: #333; color: #666; cursor: default; }
+    #counter {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: #666;
+      min-width: 80px;
+      text-align: center;
+    }
+
+    /* ─── SLIDE 1 – COVER ──────────────────────────────────────────── */
+    .cover-split { display: flex; width: 100%; height: 100%; }
+    .cover-left {
+      flex: 0 0 52%;
+      background: var(--black);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 60px 56px;
+      position: relative;
+    }
+    .cover-right {
+      flex: 1;
+      background: var(--red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .cover-deco {
+      position: absolute;
+      font-size: 280px;
+      font-weight: 900;
+      color: var(--red-dk);
+      letter-spacing: -0.05em;
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+      transform: rotate(-10deg) translate(20%, 10%);
+    }
+    .cover-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 16px;
+    }
+    .cover-title {
+      font-size: 42px;
+      font-weight: 800;
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .cover-subtitle {
+      font-size: 16px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: var(--grey-lt);
+      text-transform: uppercase;
+      margin-bottom: 48px;
+    }
+    .cover-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .cover-meta-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: var(--grey);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .cover-meta-val {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--white);
+    }
+    .cover-meta-sub {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--grey);
+    }
+
+    /* ─── SECTION DIVIDER SLIDE ────────────────────────────────────── */
+    .section-divider {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 0 80px;
+    }
+    .section-divider .big-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 20px;
+    }
+    .section-divider .big-title {
+      font-size: 72px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 1.0;
+      color: var(--white);
+    }
+    .section-divider .big-title em {
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    /* ─── APPROACH PHASES ──────────────────────────────────────────── */
+    .phases-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 18px;
+      flex: 1;
+    }
+    .phase-card {
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 22px 22px;
+      background: rgba(255,255,255,0.02);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .phase-card .phase-num { margin-bottom: 0; }
+    .phase-card .phase-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .phase-card p { font-size: 11.5px; }
+
+    /* ─── TECH SPECS ───────────────────────────────────────────────── */
+    .specs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      flex: 1;
+    }
+    .spec-block { display: flex; flex-direction: column; gap: 8px; }
+    .spec-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 4px;
+    }
+    .spec-block p { font-size: 12px; }
+
+    /* ─── CLOSING SLIDE ────────────────────────────────────────────── */
+    .closing {
+      flex-direction: row;
+      align-items: stretch;
+    }
+    .closing-left {
+      flex: 0 0 55%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 56px;
+    }
+    .closing-right {
+      flex: 1;
+      background: var(--red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 48px;
+    }
+    .closing-big {
+      font-size: 56px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 1.0;
+      margin-bottom: 32px;
+    }
+    .closing-big em { font-style: italic; font-weight: 300; }
+    .contact-block {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .contact-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .contact-email {
+      font-size: 15px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.8);
+    }
+    .contact-agency {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 8px;
+    }
+
+    /* ─── NOTE BOX ─────────────────────────────────────────────────── */
+    .note-box {
+      background: rgba(192,49,42,0.1);
+      border-left: 3px solid var(--red);
+      padding: 12px 16px;
+      border-radius: 0 6px 6px 0;
+      font-size: 11.5px;
+      color: var(--grey-lt);
+      line-height: 1.55;
+      margin-top: 12px;
+    }
+
+    /* ─── PRINT / PDF ──────────────────────────────────────────────── */
+    @media print {
+      body { background: white; }
+      #nav { display: none; }
+      .slide { display: flex !important; page-break-after: always; margin: 0; }
+    }
+
+    /* ─── RESPONSIVE SCALE ─────────────────────────────────────────── */
+    @media (max-width: 1300px) {
+      .slide { transform-origin: top center; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="deck">
+
+  <!-- ═══════════════════════════════════════════════════
+       SLIDE 1 – COVER
+  ══════════════════════════════════════════════════════ -->
+  <div class="slide active" id="s1">
+    <div class="cover-split">
+      <div class="cover-left">
+        <!-- Logo top-right absolute within cover-left -->
+        <div class="logo" style="position:absolute;top:28px;right:32px;">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 18L18 6M18 6H10M18 6V14" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="logo-text">THE<br>RIGHT<br>STREET</div>
+        </div>
+
+        <div class="cover-eyebrow">Communication Support Services</div>
+        <div class="cover-title">Proposal for<br>MEDENER</div>
+        <div class="cover-subtitle">meetMED III</div>
+
+        <div class="cover-meta">
+          <div class="cover-meta-label">Prepared by</div>
+          <div class="cover-meta-val">Maksim Maksimov</div>
+          <div class="cover-meta-sub">maksim.maksimov@therightstreet.digital</div>
+          <div class="cover-meta-sub" style="margin-top:12px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--grey);">Brussels &ndash; 10th March 2026</div>
+        </div>
+      </div>
+
+      <div class="cover-right">
+        <div class="cover-deco">M</div>
+        <div style="position:absolute;bottom:40px;left:40px;">
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);">Mediterranean Association of<br>National Agencies for Energy Management</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       SLIDE 2 – THE BRIEF
+  ══════════════════════════════════════════════════════ -->
+  <div class="slide" id="s2">
+    <div class="slide-label">Communication Support Services &middot; MEDENER</div>
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 18L18 6M18 6H10M18 6V14" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="logo-text">THE<br>RIGHT<br>STREET</div>
+    </div>
+
+    <div class="slide-inner">
+      <div class="section-title"><em>THE</em> BRIEF</div>
+      <div class="two-col">
+        <div class="col">
+          <div class="col-title">About MEDENER</div>
+          <p>MEDENER – Mediterranean Association of National Agencies for Energy Management – through its Brussels office, is seeking targeted communication support services under the EU-funded project <strong style="color:var(--white)">meetMED III</strong>.</p>
+          <div class="divider"></div>
+          <div class="col-title">Scope</div>
+          <ul class="bullets" style="gap:9px;">
+            <li>Visual identity refinement &amp; guidelines</li>
+            <li>EU visibility compliance</li>
+            <li>Website frontend cleanup (WordPress / Elementor)</li>
+            <li>Finalisation with handover of editable source files</li>
+          </ul>
+        </div>
+        <div class="col">
+          <div class="col-title">Assignment Parameters</div>
+          <ul class="bullets">
+            <li>Implementation period: <strong style="color:var(--white)">up to 3 months</strong></li>
+            <li>All deliverables designed as <strong style="color:var(--white)">one-shot outputs</strong></li>
+            <li>Work structured around <strong style="color:var(--white)">four modular workstreams</strong></li>
+            <li>Final delivery target: <strong style="color:var(--white)">before mid-April 2026</strong></li>
+          </ul>
+          <div class="note-box" style="margin-top:16px;">
+            This assignment does not include long-term social media management, campaigns, or full website redevelopment.
+          </div>
+        </div>
+      </div>
+      <div class="red-quote">
+        Four workstreams &mdash; <span>visual identity, EU compliance,<br>website frontend &amp; handover</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       SLIDE 3 – ABOUT US
+  ══════════════════════════════════════════════════════ -->
+  <div class="slide" id="s3">
+    <div class="slide-label">Communication Support Services &middot; MEDENER</div>
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 18L18 6M18 6H10M18 6V14" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="logo-text">THE<br>RIGHT<br>STREET</div>
+    </div>
+
+    <div class="slide-inner">
+      <div class="section-title"><em>ABOUT</em> US</div>
+      <div class="two-col">
+        <div class="col">
+          <p>The Right Street is a <strong style="color:var(--white)">Brussels-based communications agency</strong> specialising in policy communications, digital public affairs, and content production for organisations working at the intersection of public policy and institutional stakeholders.</p>
+          <p style="margin-top:14px;">We work with EU-funded projects, international associations, and mission-driven organisations operating in the Brussels policy space.</p>
+          <div class="divider"></div>
+          <div class="col-title">Our Services</div>
+          <ul class="bullets">
+            <li>Visual identity &amp; brand development</li>
+            <li>Digital strategy &amp; web development</li>
+            <li>Editorial production</li>
+            <li>EU institutional communications</li>
+          </ul>
+        </div>
+        <div class="col">
+          <div class="card">
+            <div class="phase-num">Our Difference</div>
+            <div class="card-title">Integrated. Structured. Compliant.</div>
+            <p>Our team combines in-house design, web development, and editorial capacity under one roof — fewer coordination gaps and faster turnaround.</p>
+          </div>
+          <div class="card" style="margin-top:16px;">
+            <div class="phase-num">How We Work</div>
+            <div class="card-title">Clear milestones. Full handover.</div>
+            <p>Milestone-driven delivery with responsive communication. All projects conclude with structured handover of polished, compliant assets.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       SLIDE 4 – OUR APPROACH
+  ══════════════════════════════════════════════════════ -->
+  <div class="slide" id="s4">
+    <div class="slide-label">Communication Support Services &middot; MEDENER</div>
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 18L18 6M18 6H10M18 6V14" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="logo-text">THE<br>RIGHT<br>STREET</div>
+    </div>
+
+    <div class="slide-inner">
+      <div class="section-title"><em>OUR</em> APPROACH</div>
+      <div class="phases-grid">
+        <div class="phase-card">
+          <div class="phase-num">Phase 1 &mdash; Week 1</div>
+          <div class="phase-title">Audit &amp; Discovery</div>
+          <p>Full review of existing visual identity assets, communication documents, and the meetMED website (meetmed.org). Establishes the baseline and identifies gaps in EU visibility compliance.</p>
+          <p style="margin-top:6px;font-size:11px;color:var(--grey);">Requires: WordPress backend access, hosting &amp; domain</p>
+        </div>
+        <div class="phase-card">
+          <div class="phase-num">Phase 2 &mdash; Weeks 2–4</div>
+          <div class="phase-title">Visual Identity &amp; EU Compliance</div>
+          <p>Refinement of visual identity and production of guidelines — logo usage, colour palette, typography. PowerPoint and Word templates developed in parallel, integrating EU visibility requirements from the outset.</p>
+        </div>
+        <div class="phase-card">
+          <div class="phase-num">Phase 3 &mdash; Weeks 2–4</div>
+          <div class="phase-title">Website Alignment</div>
+          <p>Running in parallel with Phase 2. Frontend fixes, updated visual identity applied, EU compliance elements implemented on meetMED website (WordPress / Elementor). Modular scope: Options A, B, and C available.</p>
+        </div>
+        <div class="phase-card">
+          <div class="phase-num">Phase 4 &mdash; Final Week</div>
+          <div class="phase-title">Quality Check &amp; Handover</div>
+          <p>Final QA across all deliverables, followed by handover of working files in open, editable formats. All deliverables targeted for completion before mid-April.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       SLIDE 5 – DELIVERABLES: MODULE A (Visual Identity)
+  ══════════════════════════════════════════════════════ -->
+  <div class="slide" id="s5">
+    <div class="slide-label">Communication Support Services &middot; MEDENER</div>
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 18L18 6M18 6H10M18 6V14" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="logo-text">THE<br>RIGHT<br>STREET</div>
+    </div>
+
+    <div class="slide-inner">
+      <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:28px;">
+        <div class="section-title" style="margin-bottom:0;font-size:42px;"><em>MODULE A</em> — VISUAL IDENTITY</div>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:100px;">Option</th>
+              <th>Deliverables</th>
+              <th style="width:80px;">Hours</th>
+              <th style="width:110px;">Price (excl. VAT)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-option">Basic</td>
+              <td>
+                Refinement of existing visual identity &middot; PowerPoint (up to 15 master slides) &amp; Word templates &middot;
+                Basic visual consistency package (PDF + logo &amp; graphic elements) &middot;
+                Review &amp; correction of existing communication materials (up to 50) &middot;
+                EU visibility alignment &amp; validation-ready compliance version
+              </td>
+              <td class="td-time">72 h</td>
+              <td class="td-price">€8,640</td>
+            </tr>
+            <tr>
+              <td class="td-option">Advanced</td>
+              <td>
+                All from Basic + Specialist UX/UI designer for website:
+                sitemap &middot; content segmentation &middot; key pages mockup with applied visual language &amp; design direction
+              </td>
+              <td class="td-time">92 h</td>
+              <td class="td-price">€11,040</td>
+            </tr>
+            <tr>
+              <td class="td-option">Comprehensive</td>
+              <td>
+                All from Basic &amp; Advanced + Structured handover packages — editable source files organised per deliverable with naming conventions and asset documentation
+              </td>
+              <td class="td-time">112 h</td>
+              <td class="td-price">€13,440</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note-box">
+        All options include EU visibility requirements applied across all design items and a validation-ready compliance version.
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       SLIDE 6 – DELIVERABLES: MODULE B (Website)
+  ══════════════════════════════════════════════════════ -->
+  <div class="slide" id="s6">
+    <div class="slide-label">Communication Support Services &middot; MEDENER</div>
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 18L18 6M18 6H10M18 6V14" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="logo-text">THE<br>RIGHT<br>STREET</div>
+    </div>
+
+    <div class="slide-inner">
+      <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:28px;">
+        <div class="section-title" style="margin-bottom:0;font-size:42px;"><em>MODULE B</em> — WEBSITE</div>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:100px;">Option</th>
+              <th>Deliverables</th>
+              <th style="width:80px;">Hours</th>
+              <th style="width:110px;">Price (excl. VAT)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-option">Basic</td>
+              <td>
+                Frontend cleanup &amp; EU compliance: fixing visible bugs &middot; visual identity alignment (colours, buttons, sliders) &middot;
+                plugin review &middot; WCAG 2.1 AA accessibility &middot; Accessibility Statement, Privacy &amp; Cookie Policy pages &middot;
+                basic compliance check
+              </td>
+              <td class="td-time">28 h</td>
+              <td class="td-price">€3,360</td>
+            </tr>
+            <tr>
+              <td class="td-option">Advanced</td>
+              <td>
+                All from Basic + sitemap refinement &middot; content segmentation &middot;
+                key pages mockups &middot; development of approved mockups in Elementor &middot;
+                backend content structure reorganisation
+                <span style="font-size:11px;color:var(--grey);"> (design hours in Module A – Advanced)</span>
+              </td>
+              <td class="td-time">60 h</td>
+              <td class="td-price">€7,200</td>
+            </tr>
+            <tr>
+              <td class="td-option">Comprehensive</td>
+              <td>
+                All from Basic &amp; Advanced + contact form setup &middot;
+                basic SEO review (page titles, meta descriptions, headings structure, indexability check)
+                <span style="font-size:11px;color:var(--grey);"> (design hours in Module A – Advanced)</span>
+              </td>
+              <td class="td-time">70 h</td>
+              <td class="td-price">€8,400</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note-box">
+        Website Options "Advanced" and "Comprehensive" require Module A – Advanced design mockups before development. All options assume administrator-level access to the website, hosting (FTP), and domain.
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       SLIDE 7 – TECHNICAL SPECIFICATIONS
+  ══════════════════════════════════════════════════════ -->
+  <div class="slide" id="s7">
+    <div class="slide-label">Communication Support Services &middot; MEDENER</div>
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 18L18 6M18 6H10M18 6V14" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="logo-text">THE<br>RIGHT<br>STREET</div>
+    </div>
+
+    <div class="slide-inner">
+      <div class="section-title"><em>TECHNICAL</em> SPECIFICATIONS</div>
+      <div class="specs-grid">
+        <div class="spec-block">
+          <div class="spec-label">Platform</div>
+          <p>WordPress + Elementor (current setup). Elementor Pro licence required — client purchases or we purchase and transfer post-delivery. Elementor updated to latest stable version before design work begins.</p>
+        </div>
+        <div class="spec-block">
+          <div class="spec-label">Design Elements</div>
+          <p>Button styles, borders, and section gaps applied globally via Elementor theme style. Slider/carousel via Elementor-native widgets only. No custom JS. Custom CSS in Elementor CSS fields — no direct theme file edits.</p>
+        </div>
+        <div class="spec-block">
+          <div class="spec-label">Development</div>
+          <p>Mockups delivered in Figma (or equivalent) and approved before development. No child theme. No custom theme modifications.</p>
+        </div>
+        <div class="spec-block">
+          <div class="spec-label">Plugins</div>
+          <p>All plugins updated to latest stable versions (Option A). Unsupported / security-risk plugins removed. SEO via Yoast SEO (free). Events via existing Events Calendar plugin.</p>
+        </div>
+        <div class="spec-block">
+          <div class="spec-label">Excluded Scope</div>
+          <p>No WooCommerce, membership, or booking functionality. No third-party API integrations. No multisite or multilingual configuration. No server config, DNS management, or hosting migration.</p>
+        </div>
+        <div class="spec-block">
+          <div class="spec-label">Included in All Options</div>
+          <p>Final quality check across all deliverables. Handover of editable source files. No long-term social media management, campaigns, or full website redevelopment.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       SLIDE 8 – TIMELINE: WEBSITE
+  ══════════════════════════════════════════════════════ -->
+  <div class="slide" id="s8">
+    <div class="slide-label">Communication Support Services &middot; MEDENER</div>
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 18L18 6M18 6H10M18 6V14" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="logo-text">THE<br>RIGHT<br>STREET</div>
+    </div>
+
+    <div class="slide-inner">
+      <div class="section-title" style="font-size:38px;"><em>TIMELINE</em> — WEBSITE OPTIONS</div>
+      <div class="two-col" style="gap:32px;">
+        <!-- Basic -->
+        <div class="col">
+          <div class="col-title" style="color:var(--red);">Website — Option Basic</div>
+          <table class="tl-table">
+            <thead><tr><th>Milestone</th><th>Timing</th></tr></thead>
+            <tbody>
+              <tr><td class="tl-milestone">Audit: visual identity &amp; communication materials</td><td class="tl-week">Week 1</td></tr>
+              <tr><td class="tl-milestone">Website backend access received</td><td class="tl-week">Week 1</td></tr>
+              <tr><td class="tl-milestone">Website audit: frontend bugs, plugins, accessibility</td><td class="tl-week">Week 1</td></tr>
+              <tr><td class="tl-milestone">Visual identity refinement &amp; consistency package</td><td class="tl-week">Weeks 2–3</td></tr>
+              <tr><td class="tl-milestone">Website design alignment: colours, buttons, UI</td><td class="tl-week">Week 3</td></tr>
+              <tr><td class="tl-milestone">Compliance: accessibility, cookie consent, policy pages</td><td class="tl-week">Weeks 3–4</td></tr>
+              <tr><td class="tl-milestone">QA &amp; optimisation</td><td class="tl-week">Week 5</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Advanced -->
+        <div class="col">
+          <div class="col-title" style="color:var(--red);">Website — Option Advanced</div>
+          <table class="tl-table">
+            <thead><tr><th>Milestone</th><th>Timing</th></tr></thead>
+            <tbody>
+              <tr><td class="tl-milestone">Audit: visual identity &amp; communication materials</td><td class="tl-week">Week 1</td></tr>
+              <tr><td class="tl-milestone">Website backend access &amp; full audit</td><td class="tl-week">Week 1</td></tr>
+              <tr><td class="tl-milestone">Visual identity refinement &amp; consistency package</td><td class="tl-week">Weeks 2–3</td></tr>
+              <tr><td class="tl-milestone">Sitemap, content segmentation, wireframes</td><td class="tl-week">Weeks 2–3</td></tr>
+              <tr><td class="tl-milestone">Mockups creation</td><td class="tl-week">Weeks 3–4</td></tr>
+              <tr><td class="tl-milestone">Development: homepage, UI system, header/footer, backend</td><td class="tl-week">Weeks 4–5</td></tr>
+              <tr><td class="tl-milestone">Development: key pages, archives, CPTs, templates</td><td class="tl-week">Weeks 4–5</td></tr>
+              <tr><td class="tl-milestone">EU compliance + WCAG + policy pages</td><td class="tl-week">Week 5</td></tr>
+              <tr><td class="tl-milestone">QA &amp; optimisation</td><td class="tl-week">Week 5</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       SLIDE 9 – TIMELINE: WEBSITE COMPREHENSIVE + VI
+  ══════════════════════════════════════════════════════ -->
+  <div class="slide" id="s9">
+    <div class="slide-label">Communication Support Services &middot; MEDENER</div>
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 18L18 6M18 6H10M18 6V14" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="logo-text">THE<br>RIGHT<br>STREET</div>
+    </div>
+
+    <div class="slide-inner">
+      <div class="section-title" style="font-size:38px;"><em>TIMELINE</em> — COMPREHENSIVE &amp; VISUAL IDENTITY</div>
+      <div class="two-col" style="gap:32px;">
+        <!-- Comprehensive -->
+        <div class="col">
+          <div class="col-title" style="color:var(--red);">Website — Option Comprehensive</div>
+          <table class="tl-table">
+            <thead><tr><th>Milestone</th><th>Timing</th></tr></thead>
+            <tbody>
+              <tr><td class="tl-milestone">Audit: visual identity &amp; communication materials</td><td class="tl-week">Week 1</td></tr>
+              <tr><td class="tl-milestone">Website backend access &amp; full audit</td><td class="tl-week">Week 1</td></tr>
+              <tr><td class="tl-milestone">Visual identity refinement &amp; consistency package</td><td class="tl-week">Weeks 2–3</td></tr>
+              <tr><td class="tl-milestone">Sitemap, content segmentation, wireframes</td><td class="tl-week">Weeks 2–3</td></tr>
+              <tr><td class="tl-milestone">Mockups creation</td><td class="tl-week">Week 3</td></tr>
+              <tr><td class="tl-milestone">Development: homepage, UI system, header/footer, backend</td><td class="tl-week">Weeks 4–5</td></tr>
+              <tr><td class="tl-milestone">Development: key pages, archives, CPTs, templates</td><td class="tl-week">Weeks 4–5</td></tr>
+              <tr><td class="tl-milestone">Contact form + EU compliance + WCAG + policy pages</td><td class="tl-week">Weeks 4–5</td></tr>
+              <tr><td class="tl-milestone">SEO review &amp; optimisation</td><td class="tl-week">Week 5</td></tr>
+              <tr><td class="tl-milestone">QA &amp; optimisation</td><td class="tl-week">Week 5</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Visual Identity Basic -->
+        <div class="col">
+          <div class="col-title" style="color:var(--red);">Visual Identity — Option Basic</div>
+          <table class="tl-table">
+            <thead><tr><th>Milestone</th><th>Timing</th></tr></thead>
+            <tbody>
+              <tr><td class="tl-milestone">Audit: visual identity &amp; communication materials</td><td class="tl-week">Week 1</td></tr>
+              <tr><td class="tl-milestone">Visual identity refinement &amp; consistency package</td><td class="tl-week">Weeks 2–3</td></tr>
+              <tr><td class="tl-milestone">PowerPoint &amp; Word template design</td><td class="tl-week">Weeks 3–4</td></tr>
+              <tr><td class="tl-milestone">EU visibility compliance review &amp; corrections</td><td class="tl-week">Weeks 4–5</td></tr>
+              <tr><td class="tl-milestone">Validation-ready versions delivered</td><td class="tl-week">Week 5</td></tr>
+            </tbody>
+          </table>
+          <div class="note-box" style="margin-top:14px;">
+            Visual Identity Options Advanced &amp; Comprehensive timelines will be confirmed based on the selected website option and design team availability.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       SLIDE 10 – RELEVANT EXPERIENCE
+  ══════════════════════════════════════════════════════ -->
+  <div class="slide" id="s10">
+    <div class="slide-label">Communication Support Services &middot; MEDENER</div>
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 18L18 6M18 6H10M18 6V14" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="logo-text">THE<br>RIGHT<br>STREET</div>
+    </div>
+
+    <div class="slide-inner">
+      <div class="section-title"><em>RELEVANT</em> EXPERIENCE</div>
+      <div class="exp-grid">
+        <div class="exp-card">
+          <div class="exp-project">Web Update</div>
+          <div class="exp-client">GCOM</div>
+          <div class="exp-desc">Website update and visual alignment for an international intergovernmental organisation — scope covering frontend improvements, EU compliance, and content organisation.</div>
+        </div>
+        <div class="exp-card">
+          <div class="exp-project">Website Redesign</div>
+          <div class="exp-client">EUnited</div>
+          <div class="exp-desc">Full website redesign for a European industry association — visual identity integration, Elementor development, and structured asset handover.</div>
+        </div>
+        <div class="exp-card">
+          <div class="exp-project">Housing Report</div>
+          <div class="exp-client">UNITES</div>
+          <div class="exp-desc">Editorial production and design of a policy report for a European housing initiative — layout, visual consistency, and publication-ready delivery.</div>
+        </div>
+        <div class="exp-card">
+          <div class="exp-project">Website Redesign</div>
+          <div class="exp-client">ERA</div>
+          <div class="exp-desc">Website redesign for a European regulatory agency — full visual identity integration, accessibility improvements, and compliance-ready frontend development.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       SLIDE 11 – CLOSING
+  ══════════════════════════════════════════════════════ -->
+  <div class="slide closing" id="s11">
+    <div class="closing-left">
+      <!-- Logo top-right absolute -->
+      <div class="logo" style="position:absolute;top:28px;right:32px;">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6 18L18 6M18 6H10M18 6V14" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="logo-text">THE<br>RIGHT<br>STREET</div>
+      </div>
+
+      <div class="closing-big"><em>LET'S</em><br>WORK<br>TOGETHER.</div>
+      <div class="contact-block">
+        <div class="contact-name">Maksim Maksimov</div>
+        <div class="contact-email">maksim.maksimov@therightstreet.digital</div>
+        <div class="contact-agency">The Right Street Digital &mdash; Brussels</div>
+      </div>
+    </div>
+    <div class="closing-right">
+      <div style="display:flex;flex-direction:column;gap:20px;width:100%;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.7);">Summary</div>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:12px;">
+            <div>
+              <div style="font-size:12px;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:0.08em;">Module A — Visual Identity</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.6);margin-top:2px;">Basic / Advanced / Comprehensive</div>
+            </div>
+            <div style="font-size:15px;font-weight:800;color:var(--white);">€8,640 – €13,440</div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:12px;">
+            <div>
+              <div style="font-size:12px;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:0.08em;">Module B — Website</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.6);margin-top:2px;">Basic / Advanced / Comprehensive</div>
+            </div>
+            <div style="font-size:15px;font-weight:800;color:var(--white);">€3,360 – €8,400</div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div>
+              <div style="font-size:12px;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:0.08em;">Timeline</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.6);margin-top:2px;">Up to 3 months &mdash; target mid-April 2026</div>
+            </div>
+            <div style="font-size:12px;font-weight:800;color:var(--white);">5 Weeks</div>
+          </div>
+        </div>
+        <div style="margin-top:10px;font-size:10.5px;color:rgba(255,255,255,0.55);line-height:1.6;">
+          All prices excl. VAT. Timelines assume timely provision of access and materials by the client.
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /deck -->
+
+<!-- NAVIGATION -->
+<div id="nav">
+  <button id="prevBtn" onclick="navigate(-1)" disabled>&#8592; Prev</button>
+  <span id="counter">1 / 11</span>
+  <button id="nextBtn" onclick="navigate(1)">Next &#8594;</button>
+</div>
+
+<script>
+  let current = 0;
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+
+  function show(n) {
+    slides[current].classList.remove('active');
+    current = (n + total) % total;
+    slides[current].classList.add('active');
+    document.getElementById('counter').textContent = (current + 1) + ' / ' + total;
+    document.getElementById('prevBtn').disabled = current === 0;
+    document.getElementById('nextBtn').disabled = current === total - 1;
+  }
+
+  function navigate(dir) { show(current + dir); }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') navigate(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   navigate(-1);
+  });
+
+  // Scale slides to fit window
+  function scaleDeck() {
+    const w = window.innerWidth;
+    const slideEl = document.querySelector('.slide');
+    const slideW = 1280;
+    const scale = Math.min(1, (w - 40) / slideW);
+    document.querySelectorAll('.slide').forEach(s => {
+      s.style.transform = scale < 1 ? 'scale(' + scale + ')' : '';
+      s.style.marginTop = scale < 1 ? (-((1 - scale) * 720 / 2)) + 'px' : '0';
+    });
+  }
+  window.addEventListener('resize', scaleDeck);
+  scaleDeck();
+</script>
+</body>
+</html>
