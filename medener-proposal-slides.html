@@ -6,16 +6,21 @@
   <title>MEDENER – Communication Support Services | The Right Street</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet" />
   <style>
     /* ─── RESET & BASE ─────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --black:   #141414;
-      --red:     #C0312A;
-      --red-dk:  #8C1F1A;
-      --red-lt:  #D9A09C;
+      --red:     #AD1F24;
+      --red-dk:  #7A1519;
+      --red-lt:  #C97A7D;
+      --blue:    #40459B;
+      --purple:  #582D83;
+      --mauve:   #A6666E;
+      --orange:  #B64A26;
+      --green:   #235B2E;
       --white:   #FFFFFF;
       --grey:    #A0A0A0;
       --grey-lt: #D0D0D0;
@@ -25,7 +30,7 @@
 
     html, body {
       background: #0a0a0a;
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: 'Figtree', system-ui, sans-serif;
       color: var(--white);
       height: 100%;
     }
@@ -392,7 +397,7 @@
       cursor: pointer;
       transition: background 0.15s;
     }
-    #nav button:hover { background: #a02420; }
+    #nav button:hover { background: var(--red-dk); }
     #nav button:disabled { background: #333; color: #666; cursor: default; }
     #counter {
       font-size: 12px;
