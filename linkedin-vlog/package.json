@@ -1,0 +1,24 @@
+{
+  "name": "linkedin-vlog",
+  "version": "1.0.0",
+  "description": "LinkedIn business trip vlog editor — 60-90 sec",
+  "scripts": {
+    "start": "npx remotion studio",
+    "render": "npx remotion render LinkedInVlog out/vlog.mp4",
+    "build": "npx remotion render LinkedInVlog out/vlog.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.241",
+    "remotion": "4.0.241",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.1",
+    "@types/react-dom": "18.3.1",
+    "typescript": "5.4.5"
+  },
+  "remotion": {
+    "entryPoint": "src/index.ts"
+  }
+}
