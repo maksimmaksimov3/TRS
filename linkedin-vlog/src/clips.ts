@@ -1,59 +1,124 @@
-import type { Clip } from "./types";
+import type { Shot } from "./types";
 
 /**
- * EDIT THIS FILE to configure your vlog clips.
+ * EDIT TIMELINE — Analytica 2026 LinkedIn Vlog
  *
- * 1. Drop your video files into the /public/clips/ folder.
- * 2. Add an entry per clip below.
- * 3. Adjust durationSec so the total sums to 60-90 seconds.
+ * Best-guess file assignments based on chronological IMG order.
+ * Swap any file name below if a shot doesn't match.
  *
- * Example total: 8+7+8+7+8+7+8+7+8 = 68 sec ✓
+ * To preview: npm start → opens Remotion Studio
+ * To render:  npm run render → outputs out/vlog.mp4
  */
-export const CLIPS: Clip[] = [
+export const SHOTS: Shot[] = [
+  // ── ACT 1: Departure ──
   {
-    src: "clips/clip1.mp4",
-    durationSec: 8,
-    caption: "Heading to the airport",
-    location: "Warsaw, PL",
+    src: "clips/IMG_7816.MOV",
+    durationSec: 2,
+    text: "Munich.",
+    type: "video",
+    trimStart: 0,
   },
   {
-    src: "clips/clip2.mp4",
-    durationSec: 7,
-    caption: "First day at the conference",
+    src: "clips/IMG_7817.MOV",
+    durationSec: 2,
+    text: "First conference.",
+    type: "video",
+    trimStart: 0,
   },
   {
-    src: "clips/clip3.mp4",
-    durationSec: 8,
-    caption: "Keynote highlights",
+    src: "clips/IMG_7818.MOV",
+    durationSec: 3,
+    text: "Representing @Digital Alley.",
+    type: "video",
+    trimStart: 0,
   },
   {
-    src: "clips/clip4.mp4",
-    durationSec: 7,
-    caption: "Networking sessions",
+    src: "clips/IMG_7819.MOV",
+    durationSec: 2,
+    type: "video",
+    trimStart: 0,
   },
   {
-    src: "clips/clip5.mp4",
-    durationSec: 8,
-    caption: "Workshop deep-dive",
+    src: "clips/IMG_7820.MOV",
+    durationSec: 4,
+    text: "Analytica 2026.",
+    type: "video",
+    trimStart: 0,
+  },
+
+  // ── ACT 2: Arrival ──
+  {
+    src: "clips/IMG_7821.MOV",
+    durationSec: 5,
+    type: "video",
+    trimStart: 0,
   },
   {
-    src: "clips/clip6.mp4",
-    durationSec: 7,
-    caption: "Team dinner",
+    src: "clips/IMG_7822.MOV",
+    durationSec: 4,
+    text: "This is where the photonics world shows up.",
+    type: "video",
+    trimStart: 0,
   },
   {
-    src: "clips/clip7.mp4",
-    durationSec: 8,
-    caption: "Final day wrap-up",
+    src: "clips/IMG_7826.MOV",
+    durationSec: 3,
+    type: "video",
+    trimStart: 0,
+  },
+
+  // ── ACT 3: The Event ──
+  // Flash frame photo between acts (Casey Neistat style)
+  {
+    src: "clips/IMG_7844.jpg",
+    durationSec: 0.4,
+    type: "image",
   },
   {
-    src: "clips/clip8.mp4",
-    durationSec: 7,
-    caption: "Key takeaways",
+    src: "clips/IMG_7842.MOV",
+    durationSec: 5,
+    text: "Digital Alley is in the room.",
+    type: "video",
+    trimStart: 0,
   },
   {
-    src: "clips/clip9.mp4",
-    durationSec: 8,
-    caption: "Flying back home",
+    src: "clips/IMG_7843.MOV",
+    durationSec: 5,
+    type: "video",
+    trimStart: 0,
+  },
+  // Another flash frame
+  {
+    src: "clips/IMG_7823.JPG",
+    durationSec: 0.4,
+    type: "image",
+  },
+  {
+    src: "clips/IMG_7851.MOV",
+    durationSec: 4,
+    type: "video",
+    trimStart: 5,
+  },
+  {
+    src: "clips/IMG_7858.MOV",
+    durationSec: 4,
+    type: "video",
+    trimStart: 0,
+  },
+
+  // ── ACT 4: Return ──
+  {
+    src: "clips/IMG_7885.MOV",
+    durationSec: 4,
+    text: "Done.",
+    type: "video",
+    trimStart: 0,
+  },
+  {
+    src: "clips/IMG_7888.MOV",
+    durationSec: 5,
+    text: '"First one down."',
+    type: "video",
+    trimStart: 0,
   },
 ];

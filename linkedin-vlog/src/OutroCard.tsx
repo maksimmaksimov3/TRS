@@ -7,24 +7,22 @@ import {
   spring,
 } from "remotion";
 
-export const OutroCard: React.FC<{ accentColor: string }> = ({
-  accentColor,
+export const OutroCard: React.FC<{ orange: string; purple: string }> = ({
+  orange,
+  purple,
 }) => {
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
 
-  const scale = spring({ fps, frame, from: 0.8, to: 1, delay: 5 });
-  const opacity = interpolate(
-    frame,
-    [0, 15, durationInFrames - 10, durationInFrames],
-    [0, 1, 1, 0],
-    { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
-  );
+  const scale = spring({ fps, frame, from: 0.9, to: 1, delay: 3 });
+  const opacity = interpolate(frame, [0, 10], [0, 1], {
+    extrapolateRight: "clamp",
+  });
 
   return (
     <AbsoluteFill
       style={{
-        background: `linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 60%, ${accentColor}22 100%)`,
+        background: `linear-gradient(160deg, #0a0a0a 0%, ${purple}33 50%, ${orange}22 100%)`,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -38,57 +36,63 @@ export const OutroCard: React.FC<{ accentColor: string }> = ({
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: 20,
+          gap: 24,
         }}
       >
-        {/* LinkedIn logo color block */}
+        {/* DA wordmark */}
         <div
           style={{
-            width: 100,
-            height: 100,
-            background: accentColor,
-            borderRadius: 20,
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
+            gap: 4,
           }}
         >
           <span
             style={{
-              color: "#fff",
-              fontFamily: "'Arial Black', sans-serif",
-              fontSize: 56,
-              fontWeight: 900,
+              color: orange,
+              fontFamily: "'Open Sans', sans-serif",
+              fontSize: 72,
+              fontWeight: 800,
+              letterSpacing: -2,
             }}
           >
-            in
+            DIGITAL
+          </span>
+          <span
+            style={{
+              color: purple,
+              fontFamily: "'Open Sans', sans-serif",
+              fontSize: 72,
+              fontWeight: 800,
+              letterSpacing: -2,
+            }}
+          >
+            ALLEY
           </span>
         </div>
 
-        <p
+        {/* Orange bar */}
+        <div
           style={{
-            color: "#fff",
-            fontFamily: "'Arial', sans-serif",
-            fontSize: 42,
-            fontWeight: 700,
-            margin: 0,
-            textAlign: "center",
+            width: 60,
+            height: 5,
+            background: orange,
+            borderRadius: 3,
           }}
-        >
-          Thanks for watching
-        </p>
+        />
 
         <p
           style={{
             color: "#aaa",
-            fontFamily: "'Arial', sans-serif",
-            fontSize: 30,
-            fontWeight: 400,
+            fontFamily: "'Open Sans', sans-serif",
+            fontSize: 28,
+            fontWeight: 600,
             margin: 0,
-            letterSpacing: 2,
+            letterSpacing: 4,
+            textTransform: "uppercase",
           }}
         >
-          Follow for more behind-the-scenes
+          First one down.
         </p>
       </div>
     </AbsoluteFill>

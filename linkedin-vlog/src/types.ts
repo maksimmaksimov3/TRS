@@ -1,12 +1,12 @@
-export type Clip = {
-  /** Path relative to /public, e.g. "clips/clip1.mp4" */
+export type Shot = {
+  /** Path relative to /public, e.g. "clips/IMG_7816.MOV" */
   src: string;
-  /** Duration of this clip in the final edit (seconds) */
+  /** Duration of this shot in the final edit (seconds) */
   durationSec: number;
-  /** Optional caption shown in the lower-third */
-  caption?: string;
-  /** Optional location tag shown top-right */
-  location?: string;
+  /** Text overlay — bold, Casey Neistat style */
+  text?: string;
   /** Trim: start offset in the source file (seconds) */
   trimStart?: number;
+  /** "video" or "image" */
+  type: "video" | "image";
 };

@@ -1,76 +1,84 @@
 import React from "react";
 import {
   AbsoluteFill,
-  Audio,
   Sequence,
   useVideoConfig,
+  Img,
   staticFile,
 } from "remotion";
 import { z } from "zod";
-import { clipSchema, ClipSequence } from "./ClipSequence";
+import { shotSchema, ShotClip } from "./ShotClip";
 import { IntroCard } from "./IntroCard";
 import { OutroCard } from "./OutroCard";
+import { Letterbox } from "./Letterbox";
 
 export const vlogSchema = z.object({
-  clips: z.array(clipSchema),
+  shots: z.array(shotSchema),
   title: z.string(),
   subtitle: z.string(),
-  location: z.string(),
-  accentColor: z.string(),
+  orange: z.string(),
+  purple: z.string(),
 });
 
 type Props = z.infer<typeof vlogSchema>;
 
-const INTRO_DURATION_SEC = 3;
-const OUTRO_DURATION_SEC = 4;
+const INTRO_SEC = 2;
+const OUTRO_SEC = 3;
 
 export const LinkedInVlog: React.FC<Props> = ({
-  clips,
+  shots,
   title,
   subtitle,
-  location,
-  accentColor,
+  orange,
+  purple,
 }) => {
   const { fps } = useVideoConfig();
 
-  const introDur = INTRO_DURATION_SEC * fps;
-  const outroDur = OUTRO_DURATION_SEC * fps;
+  const introDur = INTRO_SEC * fps;
+  const outroDur = OUTRO_SEC * fps;
 
-  // Build timeline: intro → clips → outro
   let cursor = introDur;
-  const clipOffsets: number[] = [];
-  for (const clip of clips) {
-    clipOffsets.push(cursor);
-    cursor += Math.round(clip.durationSec * fps);
+  const offsets: number[] = [];
+  for (const shot of shots) {
+    offsets.push(cursor);
+    cursor += Math.round(shot.durationSec * fps);
   }
 
   return (
     <AbsoluteFill style={{ background: "#000" }}>
-      {/* ── Intro card ── */}
+      {/* ── Font import ── */}
+      <style>
+        {`@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');`}
+      </style>
+
+      {/* ── Intro ── */}
       <Sequence from={0} durationInFrames={introDur}>
         <IntroCard
           title={title}
           subtitle={subtitle}
-          location={location}
-          accentColor={accentColor}
+          orange={orange}
+          purple={purple}
         />
       </Sequence>
 
-      {/* ── Clips ── */}
-      {clips.map((clip, i) => (
+      {/* ── Shots ── */}
+      {shots.map((shot, i) => (
         <Sequence
-          key={clip.src + i}
-          from={clipOffsets[i]}
-          durationInFrames={Math.round(clip.durationSec * fps)}
+          key={i}
+          from={offsets[i]}
+          durationInFrames={Math.round(shot.durationSec * fps)}
         >
-          <ClipSequence clip={clip} accentColor={accentColor} />
+          <ShotClip shot={shot} orange={orange} purple={purple} />
         </Sequence>
       ))}
 
-      {/* ── Outro card ── */}
+      {/* ── Outro ── */}
       <Sequence from={cursor} durationInFrames={outroDur}>
-        <OutroCard accentColor={accentColor} />
+        <OutroCard orange={orange} purple={purple} />
       </Sequence>
+
+      {/* ── Cinematic letterbox bars ── */}
+      <Letterbox />
     </AbsoluteFill>
   );
 };

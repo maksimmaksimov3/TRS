@@ -10,56 +10,59 @@ import {
 export const IntroCard: React.FC<{
   title: string;
   subtitle: string;
-  location: string;
-  accentColor: string;
-}> = ({ title, subtitle, location, accentColor }) => {
+  orange: string;
+  purple: string;
+}> = ({ title, subtitle, orange, purple }) => {
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
 
-  const titleY = spring({ fps, frame, from: 40, to: 0, delay: 5 });
-  const subtitleY = spring({ fps, frame, from: 40, to: 0, delay: 15 });
-  const locationY = spring({ fps, frame, from: 40, to: 0, delay: 22 });
+  const titleScale = spring({ fps, frame, from: 0.85, to: 1, delay: 3 });
+  const titleOpacity = interpolate(frame, [0, 8], [0, 1], {
+    extrapolateRight: "clamp",
+  });
+  const subtitleSlide = spring({ fps, frame, from: 40, to: 0, delay: 10 });
 
-  const opacity = interpolate(
+  const fadeOut = interpolate(
     frame,
-    [0, 10, durationInFrames - 15, durationInFrames],
-    [0, 1, 1, 0],
+    [durationInFrames - 8, durationInFrames],
+    [1, 0],
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
   );
 
   return (
     <AbsoluteFill
       style={{
-        background: `linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 60%, ${accentColor}22 100%)`,
+        background: `linear-gradient(160deg, #0a0a0a 0%, ${purple}33 50%, ${orange}22 100%)`,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        opacity,
+        opacity: fadeOut,
       }}
     >
-      {/* Accent bar */}
+      {/* Orange bar */}
       <div
         style={{
           width: 80,
           height: 6,
-          background: accentColor,
+          background: orange,
           borderRadius: 3,
-          marginBottom: 32,
-          transform: `translateY(${titleY}px)`,
+          marginBottom: 28,
+          opacity: titleOpacity,
         }}
       />
 
       <h1
         style={{
           color: "#fff",
-          fontFamily: "'Arial Black', sans-serif",
-          fontSize: 96,
-          fontWeight: 900,
+          fontFamily: "'Open Sans', sans-serif",
+          fontSize: 88,
+          fontWeight: 800,
           margin: 0,
-          letterSpacing: -1,
+          letterSpacing: 3,
           textAlign: "center",
-          transform: `translateY(${titleY}px)`,
+          transform: `scale(${titleScale})`,
+          opacity: titleOpacity,
         }}
       >
         {title}
@@ -67,36 +70,30 @@ export const IntroCard: React.FC<{
 
       <p
         style={{
-          color: "#ccc",
-          fontFamily: "'Arial', sans-serif",
+          color: orange,
+          fontFamily: "'Open Sans', sans-serif",
           fontSize: 44,
-          fontWeight: 400,
-          margin: "16px 0 0",
-          letterSpacing: 4,
+          fontWeight: 700,
+          margin: "12px 0 0",
+          letterSpacing: 8,
           textTransform: "uppercase",
-          transform: `translateY(${subtitleY}px)`,
+          transform: `translateY(${subtitleSlide}px)`,
         }}
       >
         {subtitle}
       </p>
 
-      {location && (
-        <p
-          style={{
-            color: accentColor,
-            fontFamily: "'Arial', sans-serif",
-            fontSize: 32,
-            fontWeight: 600,
-            margin: "24px 0 0",
-            display: "flex",
-            alignItems: "center",
-            gap: 8,
-            transform: `translateY(${locationY}px)`,
-          }}
-        >
-          📍 {location}
-        </p>
-      )}
+      {/* Purple accent dot */}
+      <div
+        style={{
+          width: 12,
+          height: 12,
+          borderRadius: "50%",
+          background: purple,
+          marginTop: 32,
+          opacity: titleOpacity,
+        }}
+      />
     </AbsoluteFill>
   );
 };
