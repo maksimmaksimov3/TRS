@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EPA Audit - A Strategic Review by The Right Street</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --epa-navy: #2C3273;
+    --epa-navy-deep: #1A1F4E;
+    --epa-navy-ink: #0E1235;
+    --epa-gold: #F2C84B;
+    --epa-gold-soft: #FFF4D6;
+    --epa-cream: #FAF8F3;
+    --epa-paper: #FFFFFF;
+    --epa-rule: #E5E4DD;
+    --epa-muted: #6F6C5F;
+    --epa-ink: #1A1A1A;
+    --epa-good: #2D6A4F;
+    --epa-warn: #B5471B;
+
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Inter', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', 'SF Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--epa-cream);
+    color: var(--epa-ink);
+    font-weight: 400;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  em, i { font-style: normal; }
+
+  .page {
+    max-width: 1180px;
+    margin: 0 auto;
+    background: var(--epa-paper);
+    box-shadow: 0 0 60px rgba(14, 18, 53, 0.04);
+  }
+
+  section {
+    padding: 80px 80px;
+    border-bottom: 1px solid var(--epa-rule);
+  }
+  section:last-child { border-bottom: none; }
+
+  .masthead {
+    background: var(--epa-navy);
+    color: var(--epa-paper);
+    padding: 32px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid var(--epa-gold);
+  }
+  .masthead-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+  }
+  .p-mark {
+    width: 32px;
+    height: 32px;
+    background: var(--epa-gold);
+    color: var(--epa-navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 1;
+    transform: rotate(45deg);
+  }
+  .p-mark span { transform: rotate(-45deg); }
+  .masthead-right {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+  }
+
+  .hero {
+    padding: 100px 80px 80px;
+    background: linear-gradient(180deg, var(--epa-paper) 0%, var(--epa-cream) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    right: -100px;
+    top: 50%;
+    width: 400px;
+    height: 400px;
+    background: var(--epa-navy);
+    transform: translateY(-50%) rotate(45deg);
+    opacity: 0.025;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--epa-navy);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--epa-navy);
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(48px, 5.5vw, 76px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: var(--epa-navy-ink);
+    margin-bottom: 32px;
+    max-width: 900px;
+  }
+  .hero h1 .accent {
+    color: var(--epa-navy);
+    font-weight: 300;
+  }
+  .hero-lede {
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.5;
+    font-weight: 300;
+    color: var(--epa-muted);
+    max-width: 720px;
+    margin-bottom: 48px;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--epa-rule);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--epa-muted);
+    flex-wrap: wrap;
+  }
+  .hero-meta strong {
+    display: block;
+    color: var(--epa-navy-ink);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    margin-top: 6px;
+  }
+
+  .section-header {
+    margin-bottom: 56px;
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .section-number {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--epa-navy);
+    padding-top: 8px;
+    flex-shrink: 0;
+    width: 80px;
+  }
+  .section-title { flex: 1; }
+  .section-title .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--epa-navy);
+    margin-bottom: 12px;
+  }
+  .section-title h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(36px, 4vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    color: var(--epa-navy-ink);
+  }
+  .section-title h2 .accent {
+    color: var(--epa-navy);
+    font-weight: 300;
+  }
+  .section-title .subtitle {
+    font-family: var(--serif);
+    font-size: 19px;
+    line-height: 1.55;
+    font-weight: 300;
+    color: var(--epa-muted);
+    margin-top: 16px;
+    max-width: 720px;
+  }
+
+  .channel-divider {
+    background: var(--epa-navy);
+    color: var(--epa-paper);
+    padding: 32px 80px;
+    margin: 0 -80px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .channel-divider .num {
+    font-family: var(--serif);
+    font-size: 56px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--epa-gold);
+  }
+  .channel-divider .meta { flex: 1; }
+  .channel-divider .meta .lbl {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 6px;
+  }
+  .channel-divider .meta .ttl {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .channel-divider .scope {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    text-align: right;
+  }
+  .channel-divider .scope strong {
+    display: block;
+    color: var(--epa-paper);
+    font-size: 13px;
+    margin-top: 4px;
+    letter-spacing: 0.06em;
+  }
+
+  .numbers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--epa-rule);
+    border: 1px solid var(--epa-rule);
+    margin-top: 32px;
+  }
+  .number-tile {
+    background: var(--epa-paper);
+    padding: 36px 32px;
+    position: relative;
+  }
+  .number-tile.accent { background: var(--epa-navy); color: var(--epa-paper); }
+  .number-tile.accent .tile-label,
+  .number-tile.accent .tile-note { color: rgba(255,255,255,0.7); }
+  .number-tile.accent .tile-value { color: var(--epa-paper); }
+  .number-tile.accent .tile-value sup { color: var(--epa-gold); }
+  .tile-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--epa-muted);
+    margin-bottom: 16px;
+  }
+  .tile-value {
+    font-family: var(--serif);
+    font-size: 54px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--epa-navy-ink);
+    letter-spacing: -0.03em;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+  .tile-value .unit {
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--epa-muted);
+    margin-left: 4px;
+  }
+  .tile-value sup {
+    font-size: 13px;
+    color: var(--epa-navy);
+    font-family: var(--mono);
+    font-weight: 500;
+    margin-left: 2px;
+  }
+  .tile-note {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--epa-muted);
+    line-height: 1.45;
+  }
+  .tile-versus {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+  .tile-versus .num {
+    font-family: var(--serif);
+    font-size: 54px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--epa-navy-ink);
+    letter-spacing: -0.03em;
+  }
+  .tile-versus .vs {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    color: var(--epa-muted);
+    text-transform: uppercase;
+    padding-bottom: 6px;
+  }
+  .tile-versus .sub {
+    font-family: var(--sans);
+    font-size: 11px;
+    color: var(--epa-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+    display: block;
+  }
+  .tile-versus .col { display: flex; flex-direction: column; }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+  .col-channel {
+    border-top: 2px solid var(--epa-navy);
+    padding-top: 24px;
+  }
+  .col-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 28px;
+  }
+  .col-header h3 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 24px;
+    color: var(--epa-navy-ink);
+    letter-spacing: -0.01em;
+  }
+  .col-header .tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--epa-good);
+    padding: 4px 10px;
+    border: 1px solid var(--epa-good);
+  }
+  .col-header .tag.warn {
+    color: var(--epa-warn);
+    border-color: var(--epa-warn);
+  }
+  .finding {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--epa-rule);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .finding:last-child { border-bottom: none; }
+  .finding-icon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    color: var(--epa-good);
+  }
+  .finding-icon.warn { color: var(--epa-warn); }
+  .finding-text {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--epa-ink);
+  }
+  .finding-text strong {
+    color: var(--epa-navy-ink);
+    font-weight: 600;
+  }
+
+  .diagnosis-band {
+    background: var(--epa-navy-ink);
+    color: var(--epa-paper);
+    padding: 72px 80px;
+    margin: 0 -80px;
+    margin-bottom: 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .diagnosis-band::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 300px;
+    height: 300px;
+    background: var(--epa-gold);
+    transform: translate(50%, -50%) rotate(45deg);
+    opacity: 0.05;
+  }
+  .diagnosis-band h3 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 38px;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    max-width: 800px;
+    margin-bottom: 12px;
+  }
+  .diagnosis-band h3 .gold {
+    color: var(--epa-gold);
+    font-weight: 400;
+  }
+  .diagnosis-band .source {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+  .diagnosis-band p {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.8);
+    max-width: 740px;
+    margin-top: 20px;
+  }
+
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .pillar {
+    background: var(--epa-paper);
+    border: 1px solid var(--epa-navy);
+    padding: 36px 32px;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .pillar:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(44, 50, 115, 0.12);
+  }
+  .pillar-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--epa-navy);
+    letter-spacing: 0.18em;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--epa-rule);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-transform: uppercase;
+  }
+  .pillar-num .num {
+    width: 28px;
+    height: 28px;
+    background: var(--epa-navy);
+    color: var(--epa-paper);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+  .pillar h4 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.2;
+    color: var(--epa-navy-ink);
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+  .pillar p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--epa-muted);
+    margin-bottom: 20px;
+  }
+  .pillar ul {
+    list-style: none;
+    padding: 0;
+  }
+  .pillar ul li {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--epa-ink);
+    padding: 8px 0;
+    padding-left: 20px;
+    position: relative;
+    border-top: 1px solid var(--epa-rule);
+  }
+  .pillar ul li:first-child { border-top: none; }
+  .pillar ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--epa-navy);
+    font-weight: 500;
+  }
+
+  .cta-examples {
+    background: var(--epa-gold-soft);
+    border-left: 4px solid var(--epa-gold);
+    padding: 32px 36px;
+    margin-top: 32px;
+  }
+  .cta-examples .lbl {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--epa-navy);
+    margin-bottom: 16px;
+  }
+  .cta-examples h4 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--epa-navy-ink);
+    margin-bottom: 24px;
+    letter-spacing: -0.005em;
+  }
+  .cta-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: stretch;
+  }
+  .cta-side {
+    padding: 20px;
+    background: var(--epa-paper);
+    border: 1px solid var(--epa-rule);
+  }
+  .cta-side .head {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .cta-side.bad .head { color: var(--epa-warn); }
+  .cta-side.good .head { color: var(--epa-good); }
+  .cta-side .ex {
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--epa-ink);
+    margin-bottom: 8px;
+    font-weight: 400;
+  }
+  .cta-side .ex::before {
+    content: '"';
+    color: var(--epa-muted);
+    font-size: 20px;
+    margin-right: 2px;
+  }
+  .cta-side .ex::after {
+    content: '"';
+    color: var(--epa-muted);
+    font-size: 20px;
+  }
+
+  .closing {
+    background: var(--epa-navy);
+    color: var(--epa-paper);
+    padding: 100px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .closing::before, .closing::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: var(--epa-gold);
+    transform: rotate(45deg);
+    opacity: 0.06;
+  }
+  .closing::before { top: -100px; left: -100px; }
+  .closing::after { bottom: -100px; right: -100px; }
+  .closing .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--epa-gold);
+    margin-bottom: 32px;
+  }
+  .closing h2 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    max-width: 800px;
+    margin: 0 auto 24px;
+  }
+  .closing h2 .gold {
+    color: var(--epa-gold);
+    font-weight: 400;
+  }
+  .closing-tagline {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.75);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .footer {
+    background: var(--epa-navy-ink);
+    color: rgba(255,255,255,0.55);
+    padding: 32px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .footer a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+  }
+
+  .footnote {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--epa-muted);
+    margin-top: 24px;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+  }
+  .footnote sup { color: var(--epa-navy); margin-right: 4px; }
+
+  .diamond-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 0;
+    gap: 12px;
+  }
+  .diamond-divider .diamond {
+    width: 8px;
+    height: 8px;
+    background: var(--epa-navy);
+    transform: rotate(45deg);
+    opacity: 0.4;
+  }
+  .diamond-divider .diamond.gold { background: var(--epa-gold); opacity: 1; }
+  .diamond-divider .line {
+    height: 1px;
+    width: 60px;
+    background: var(--epa-rule);
+  }
+
+  @media (max-width: 900px) {
+    section, .masthead, .hero, .closing, .footer { padding-left: 32px; padding-right: 32px; }
+    .channel-divider, .diagnosis-band { margin: 0 -32px 48px; padding: 36px 32px; }
+    .numbers-grid { grid-template-columns: repeat(2, 1fr); }
+    .two-col { grid-template-columns: 1fr; gap: 40px; }
+    .pillars { grid-template-columns: 1fr; }
+    .cta-pair { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 42px; }
+    .section-header { flex-direction: column; gap: 8px; }
+    .channel-divider { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .channel-divider .scope { text-align: left; }
+    .masthead { flex-direction: column; gap: 16px; align-items: flex-start; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero h1, .hero-lede, .hero-meta { animation: fadeUp 0.8s ease forwards; }
+  .hero-lede { animation-delay: 0.1s; opacity: 0; }
+  .hero-meta { animation-delay: 0.2s; opacity: 0; }
+
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="masthead">
+    <div class="masthead-left">
+      <div class="p-mark"><span>P</span></div>
+      <div>A Strategic Review · Prepared for EPA</div>
+    </div>
+    <div class="masthead-right">The Right Street · May 2026</div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-eyebrow">European Parking Association · Digital Presence Audit</div>
+    <h1>EPA has the authority. <span class="accent">The work is to package it.</span></h1>
+    <p class="hero-lede">
+      The European Parking Association owns the right conversation, posts at a healthy frequency, and has a credible voice across Brussels. The next step is making the channels easier to recognise, faster to read, and more confident in their point of view.
+    </p>
+    <div class="diamond-divider">
+      <div class="line"></div>
+      <div class="diamond"></div>
+      <div class="diamond gold"></div>
+      <div class="diamond"></div>
+      <div class="line"></div>
+    </div>
+    <div class="hero-meta">
+      <div>Scope<strong>Website + LinkedIn</strong></div>
+      <div>Sample period<strong>Beginning of 2026</strong></div>
+      <div>Followers<strong>3,591</strong></div>
+      <div>Audit date<strong>May 2026</strong></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="channel-divider">
+      <div class="num">01</div>
+      <div class="meta">
+        <div class="lbl">Channel One</div>
+        <div class="ttl">LinkedIn</div>
+      </div>
+      <div class="scope">
+        Sample period<strong>Beginning of 2026</strong>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <div class="section-number">01.1</div>
+      <div class="section-title">
+        <div class="eyebrow">The numbers</div>
+        <h2>What we found <span class="accent">at a glance</span></h2>
+        <p class="subtitle">35 posts published between January and early May 2026. Engagement counted across the full sample.</p>
+      </div>
+    </div>
+
+    <div class="numbers-grid">
+      <div class="number-tile">
+        <div class="tile-label">Audience</div>
+        <div class="tile-value">3,591</div>
+        <div class="tile-note">LinkedIn followers. The reach exists.</div>
+      </div>
+      <div class="number-tile">
+        <div class="tile-label">Posting cadence</div>
+        <div class="tile-value">2.5<span class="unit">/wk</span></div>
+        <div class="tile-note">35 posts in 3 months. Frequency exists - but bursts and silences (see findings).</div>
+      </div>
+      <div class="number-tile">
+        <div class="tile-label">Format mix</div>
+        <div class="tile-versus">
+          <div class="col">
+            <div class="num">29</div>
+            <div class="sub">Image-led</div>
+          </div>
+          <div class="vs">vs</div>
+          <div class="col">
+            <div class="num">6</div>
+            <div class="sub">Video-led</div>
+          </div>
+        </div>
+        <div class="tile-note">Video sits at the top of the distribution, but is the smallest share.</div>
+      </div>
+      <div class="number-tile accent">
+        <div class="tile-label">Reactions / post</div>
+        <div class="tile-value">28<span class="unit">avg</span></div>
+        <div class="tile-note">Median 25. 991 total reactions across 35 posts.</div>
+      </div>
+      <div class="number-tile accent">
+        <div class="tile-label">Engagement rate / post</div>
+        <div class="tile-value">0.79<span class="unit">%</span></div>
+        <div class="tile-note">B2B LinkedIn benchmark sits at ~3.5%. There is real upside.</div>
+      </div>
+      <div class="number-tile accent">
+        <div class="tile-label">Top 10 vs Bottom 10</div>
+        <div class="tile-value">4.7<span class="unit">×</span></div>
+        <div class="tile-note">Top 10 avg 49 reactions, bottom 10 avg 11. No system enforcing consistency.</div>
+      </div>
+    </div>
+
+    <p class="footnote">
+      Engagement rate per post = average reactions ÷ follower count (28.3 ÷ 3,591 = 0.79%). B2B benchmark: Socialinsider 2024 LinkedIn Industry Benchmarks Report.
+    </p>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <div class="section-number">01.2</div>
+      <div class="section-title">
+        <div class="eyebrow">The diagnosis · LinkedIn</div>
+        <h2>What works, <span class="accent">where engagement leaks</span></h2>
+        <p class="subtitle">EPA is doing the work. The foundation is there. The gap is in how that work gets packaged for the feed.</p>
+      </div>
+    </div>
+
+    <div class="two-col">
+
+      <div class="col-channel">
+        <div class="col-header">
+          <h3>What's already working</h3>
+          <div class="tag">Keep</div>
+        </div>
+
+        <div class="finding">
+          <svg class="finding-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3,9 7,13 15,5"/></svg>
+          <div class="finding-text"><strong>Owns the right conversation.</strong> AI, APDS, kerbside management, EU affairs, traffic and parking integration. The topics map cleanly to where the sector is moving.</div>
+        </div>
+        <div class="finding">
+          <svg class="finding-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3,9 7,13 15,5"/></svg>
+          <div class="finding-text"><strong>Content pillars are established.</strong> Event announcements, news updates, video coverage. The structure is there - it just needs sharper templates and a clearer system.</div>
+        </div>
+        <div class="finding">
+          <svg class="finding-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3,9 7,13 15,5"/></svg>
+          <div class="finding-text"><strong>Proves real activity.</strong> Events, working groups, publications, partnerships, member initiatives. The page shows EPA actually does what it claims.</div>
+        </div>
+        <div class="finding">
+          <svg class="finding-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3,9 7,13 15,5"/></svg>
+          <div class="finding-text"><strong>Top performers are videos.</strong> The highest-reaction posts in the sample are video-led (66, 67, 57 reactions). Motion and people consistently sit at the top of the distribution.</div>
+        </div>
+        <div class="finding">
+          <svg class="finding-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3,9 7,13 15,5"/></svg>
+          <div class="finding-text"><strong>Events become multi-post moments.</strong> Intertraffic Amsterdam was turned into a sustained series across announcements, sessions, recaps and reposts. The right instinct - just needs sharper templates.</div>
+        </div>
+        <div class="finding">
+          <svg class="finding-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3,9 7,13 15,5"/></svg>
+          <div class="finding-text"><strong>Tone is credible.</strong> Collaborative, appropriate for a European association. The voice is not the issue.</div>
+        </div>
+      </div>
+
+      <div class="col-channel">
+        <div class="col-header">
+          <h3>Where engagement leaks</h3>
+          <div class="tag warn">Fix</div>
+        </div>
+
+        <div class="finding">
+          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
+          <div class="finding-text"><strong>Cadence is bursty, not paced.</strong> Three posts in one week, then silence for three weeks. The content doesn't lose relevance, but the algorithm needs to be fed every week. A steady weekly post outperforms uneven bursts.</div>
+        </div>
+        <div class="finding">
+          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
+          <div class="finding-text"><strong>Too many links in the body.</strong> LinkedIn deprioritises posts that send traffic off-platform. One link in-post is fine. Three or four becomes a drag on reach. Those belong in the first comment.</div>
+        </div>
+        <div class="finding">
+          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
+          <div class="finding-text"><strong>Templates don't scale.</strong> The speaker-announcement template works at 7 speakers but breaks with 2 - visible empty diagonal space where speakers should be.</div>
+        </div>
+        <div class="finding">
+          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
+          <div class="finding-text"><strong>Tone wobbles in video.</strong> Some clips are playful and energetic, others are calm and reflective. No rule for which register fits which moment.</div>
+        </div>
+        <div class="finding">
+          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
+          <div class="finding-text"><strong>Brand drift across assets.</strong> Colours and typography wobble - visible effort, but no enforced system. The account isn't yet instantly recognisable in the feed.</div>
+        </div>
+        <div class="finding">
+          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
+          <div class="finding-text"><strong>CTAs send people off-platform.</strong> "Check out this report", "fill out this form". LinkedIn doesn't reward this - the algorithm wants people staying and commenting, not clicking away.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="diagnosis-band">
+      <div class="source">The pattern</div>
+      <h3 style="margin-top: 16px;">The foundation is there. <span class="gold">Here's how to improve the packaging.</span></h3>
+      <p>
+        Healthy cadence, right topics, right audience, visible production effort. The work in front of EPA is in pacing, format mix, template flexibility, brand consistency, and how posts ask for engagement.
+      </p>
+    </div>
+
+    <div class="section-header">
+      <div class="section-number">01.3</div>
+      <div class="section-title">
+        <div class="eyebrow">The fix · LinkedIn</div>
+        <h2>Three workstreams, <span class="accent">not one</span></h2>
+        <p class="subtitle">Splitting the work into three concrete tracks, each with its own deliverable.</p>
+      </div>
+    </div>
+
+    <div class="pillars">
+
+      <div class="pillar">
+        <div class="pillar-num"><span class="num">1</span>System</div>
+        <h4>Rebuild the templates</h4>
+        <p>A flexible visual system that flexes with content. One-time investment, infinite reuse.</p>
+        <ul>
+          <li>Speaker template with 1, 2, 3, 4+ variants - no empty space</li>
+          <li>Branded video lower-thirds and end cards</li>
+          <li>Typography rules enforced across every asset</li>
+          <li>Reusable templates for regular updates: events, working groups, member news, partner updates and sector insights</li>
+        </ul>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-num"><span class="num">2</span>Voice</div>
+        <h4>Define the messaging house</h4>
+        <p>The single document that governs everything EPA says on LinkedIn - and outside it.</p>
+        <ul>
+          <li>The value each post type delivers to its reader</li>
+          <li>Vocabulary EPA uses, and vocabulary EPA avoids</li>
+          <li>Key messages by pillar - policy, future of parking, community, knowledge, partners</li>
+          <li>Hook formula: insight before activity, sector implication before logistics</li>
+          <li>One message, one audience, one CTA per post</li>
+        </ul>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-num"><span class="num">3</span>Packaging</div>
+        <h4>Repackage the posts</h4>
+        <p>Apply the system. Pace the cadence. Shift CTAs from outbound to inbound.</p>
+        <ul>
+          <li>Weekly steady cadence - kill bursts and silences</li>
+          <li>Cap body-text links: one in-post, the rest go to comments</li>
+          <li>Shift to discussion-driven CTAs (examples below)</li>
+          <li>Light QC pass on every post: tags, hashtags, alt text, names</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="cta-examples">
+      <div class="lbl">Worked example · CTAs</div>
+      <h4>Stop sending people away. Start asking them to stay.</h4>
+      <div class="cta-pair">
+        <div class="cta-side bad">
+          <div class="head">Off-platform · what EPA does now</div>
+          <p class="ex">Check out our latest report here.</p>
+          <p class="ex">Fill out this form to register.</p>
+          <p class="ex">Read more on our website.</p>
+        </div>
+        <div class="cta-side good">
+          <div class="head">Discussion-driven · what to shift to</div>
+          <p class="ex">What's your take - is kerbside management a city or operator problem?</p>
+          <p class="ex">Where does your association stand on APDS adoption?</p>
+          <p class="ex">Have you seen this play out in your market? Drop a note below.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="channel-divider">
+      <div class="num">02</div>
+      <div class="meta">
+        <div class="lbl">Channel Two</div>
+        <div class="ttl">europeanparking.eu</div>
+      </div>
+      <div class="scope">
+        Reviewed<strong>Full site · WordPress CMS</strong>
+      </div>
+    </div>
+
+    <div class="section-header" style="margin-top: 32px;">
+      <div class="section-number">02.1</div>
+      <div class="section-title">
+        <div class="eyebrow">The diagnosis · Website</div>
+        <h2>A database <span class="accent">that wants to be a portal</span></h2>
+        <p class="subtitle">The website holds enormous content depth and institutional credibility. The barrier isn't substance - it's structure, hierarchy, and how that depth is presented.</p>
+      </div>
+    </div>
+
+    <div class="two-col">
+
+      <div class="col-channel">
+        <div class="col-header">
+          <h3>What's already working</h3>
+          <div class="tag">Keep</div>
+        </div>
+
+        <div class="finding">
+          <svg class="finding-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3,9 7,13 15,5"/></svg>
+          <div class="finding-text"><strong>Looks legitimate and European-level.</strong> The institutional positioning lands immediately. There's no credibility gap to close.</div>
+        </div>
+        <div class="finding">
+          <svg class="finding-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3,9 7,13 15,5"/></svg>
+          <div class="finding-text"><strong>Deep content volume.</strong> Working groups, parking data initiatives, APDS, European Parking Card, conferences, ESG themes. The depth is real.</div>
+        </div>
+        <div class="finding">
+          <svg class="finding-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3,9 7,13 15,5"/></svg>
+          <div class="finding-text"><strong>Strong topical authority.</strong> Industry-specific terminology, structured thematic areas, real sector expertise visible across pages.</div>
+        </div>
+        <div class="finding">
+          <svg class="finding-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3,9 7,13 15,5"/></svg>
+          <div class="finding-text"><strong>Reliable foundation.</strong> WordPress CMS, easy to maintain, easy to extend. No need to rebuild the engine.</div>
+        </div>
+        <div class="finding">
+          <svg class="finding-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3,9 7,13 15,5"/></svg>
+          <div class="finding-text"><strong>Mobile basics hold.</strong> No major bugs, the site behaves on phones - even if scannability needs work.</div>
+        </div>
+      </div>
+
+      <div class="col-channel">
+        <div class="col-header">
+          <h3>Where it leaks</h3>
+          <div class="tag warn">Fix</div>
+        </div>
+
+        <div class="finding">
+          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
+          <div class="finding-text"><strong>Menu overload.</strong> Too many first-level items, repeated terminology, hard to scan. The navigation is the single biggest barrier on the site.</div>
+        </div>
+        <div class="finding">
+          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
+          <div class="finding-text"><strong>Homepage is a feed, not a landing page.</strong> Reads like a content river with an association description on top. No focused CTAs, no audience routing, weak visual hierarchy.</div>
+        </div>
+        <div class="finding">
+          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
+          <div class="finding-text"><strong>No journey for different audiences.</strong> Operators, municipalities, policymakers, media and members all land on the same homepage. None is guided to what they need.</div>
+        </div>
+        <div class="finding">
+          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
+          <div class="finding-text"><strong>Visual design feels template-driven.</strong> Dead space on the sides, dated typography, no differentiation between pages, no clear H1/H2/H3 hierarchy - content reads as undifferentiated plain text.</div>
+        </div>
+        <div class="finding">
+          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
+          <div class="finding-text"><strong>Imagery is generic stock.</strong> Real photos are low-resolution. There's no mobility-tech visual language - no smart city, EV charging, or urban mobility imagery anchoring the mission.</div>
+        </div>
+        <div class="finding">
+          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
+          <div class="finding-text"><strong>News, events, publications presented as flat lists.</strong> No card layouts, no filters, no search. Users have to scroll through everything to find what they need.</div>
+        </div>
+        <div class="finding">
+          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
+          <div class="finding-text"><strong>No engagement funnels.</strong> No clear membership funnel, no newsletter strategy, no conference funnel, no Working Groups CTA. The site doesn't ask the visitor to do anything.</div>
+        </div>
+        <div class="finding">
+          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
+          <div class="finding-text"><strong>Compliance gaps.</strong> No visible cookie consent banner during testing. No privacy policy despite forms collecting user data. Configuration should be reviewed.</div>
+        </div>
+        <div class="finding">
+          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
+          <div class="finding-text"><strong>SEO depth is wasted.</strong> Strong content volume and structured thematic areas, but pages feel structurally similar to crawlers, and internal linking opportunities go unused.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <div class="section-number">02.2</div>
+      <div class="section-title">
+        <div class="eyebrow">The fix · Website</div>
+        <h2>Three workstreams <span class="accent">for the website</span></h2>
+        <p class="subtitle">Same logic as the LinkedIn fix: split a fuzzy redesign brief into three concrete tracks.</p>
+      </div>
+    </div>
+
+    <div class="pillars">
+
+      <div class="pillar">
+        <div class="pillar-num"><span class="num">1</span>Architecture</div>
+        <h4>Simplify the navigation</h4>
+        <p>Cut the menu down to what matters. Move depth to where depth belongs.</p>
+        <ul>
+          <li>6 main menu items: About / Initiatives / Insights / Events & Awards / Membership / Contact</li>
+          <li>Sub-topics (Working Groups, ESG, APDS, Parking Data) become structured landing pages</li>
+          <li>Mega menu pattern for first-level navigation</li>
+          <li>Full menu in the footer - not the header</li>
+        </ul>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-num"><span class="num">2</span>Hierarchy</div>
+        <h4>Rebuild the homepage</h4>
+        <p>From content feed to strategic landing page. Guide visitors, don't drown them.</p>
+        <ul>
+          <li>Audience routing: cards for operators, cities, policymakers, members, media</li>
+          <li>Key focus areas surfaced visually, not buried in text</li>
+          <li>Clear visual differentiation: news vs events vs magazine vs newsletter</li>
+          <li>Featured item or highlighted news above the fold</li>
+          <li>Focused CTAs: Become a Member · Join an EPA Event · Subscribe to Updates</li>
+        </ul>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-num"><span class="num">3</span>Polish</div>
+        <h4>Modernise and tighten</h4>
+        <p>Visual language, compliance, content presentation. The polish that makes depth feel premium.</p>
+        <ul>
+          <li>Mobility-tech imagery: smart city, EV charging, urban mobility, conferences (real photos in HQ)</li>
+          <li>Card systems for news, publications, events - with search and filters</li>
+          <li>Typography hierarchy: clear H1, H2, H3, body, callouts</li>
+          <li>Cookie banner, privacy policy, GDPR review</li>
+          <li>Internal linking strategy to unlock SEO depth</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="closing">
+    <div class="eyebrow">The shift</div>
+    <h2>From documenting activity <span class="gold">to packaging authority.</span></h2>
+    <p class="closing-tagline">
+      EPA's foundation is right. The next step is making the channels easier to recognise, faster to read, and more confident in their point of view.
+    </p>
+    <div class="diamond-divider" style="margin-top: 56px;">
+      <div class="line" style="background: rgba(255,255,255,0.2);"></div>
+      <div class="diamond" style="background: rgba(255,255,255,0.3);"></div>
+      <div class="diamond gold"></div>
+      <div class="diamond" style="background: rgba(255,255,255,0.3);"></div>
+      <div class="line" style="background: rgba(255,255,255,0.2);"></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>The Right Street · Brussels · Be Heard</div>
+    <div>Prepared May 2026 · <a href="mailto:info@therightstreet.eu">hello@therightstreet.digital</a></div>
+  </div>
+
+</div>
+
+</body>
+</html>
