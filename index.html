@@ -1,1165 +1,1899 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EPA Audit - A Strategic Review by The Right Street</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Email Marketing III · Automation and Personalization in B2B, for Photonics</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --epa-navy: #2C3273;
-    --epa-navy-deep: #1A1F4E;
-    --epa-navy-ink: #0E1235;
-    --epa-gold: #F2C84B;
-    --epa-gold-soft: #FFF4D6;
-    --epa-cream: #FAF8F3;
-    --epa-paper: #FFFFFF;
-    --epa-rule: #E5E4DD;
-    --epa-muted: #6F6C5F;
-    --epa-ink: #1A1A1A;
-    --epa-good: #2D6A4F;
-    --epa-warn: #B5471B;
+  :root{
+    --purple:#27004D;
+    --orange:#FC4E0C;
+    --cream:#F2F2F2;
+    --cream-darker:#E9E6E0;
+    --white:#FFFFFF;
+    --muted:#766D84;
+    --body:#33214F;
+    --hairline:rgba(39,0,77,0.12);
+    --hairline-light:rgba(255,255,255,0.18);
+    --slide-x:72px;
+    --slide-top:72px;
+    --content-max:1320px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--cream);color:var(--body);font-family:'Archivo','Manrope',system-ui,sans-serif;font-weight:400;font-size:16px;line-height:1.45;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+  .poll__opt{cursor:default}
+  ul,ol{list-style:none}
 
-    --serif: 'Fraunces', Georgia, serif;
-    --sans: 'Inter', -apple-system, sans-serif;
-    --mono: 'JetBrains Mono', 'SF Mono', monospace;
+  /* TOPNAV */
+  .topnav{
+    position:absolute;top:0;left:0;right:0;z-index:10;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:48px var(--slide-x) 0;background:transparent;border-bottom:0;
   }
+  .brand{display:inline-flex;align-items:center;line-height:1;flex:0 0 auto}
+  .brand-logo{display:block;width:auto;height:32px;object-fit:contain}
+  .topnav .brand-logo{height:68px}
+  .slide__footer .brand-logo{height:40px}
+  .slide--dark .slide__footer .brand{display:none}
+  .cover-logo .brand-logo{height:62px}
+  .qa-logo .brand-logo{height:44px}
+  .nav-sections{display:none}
+  .nav-sections a{
+    font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;
+    color:var(--muted);padding:6px 8px;border-radius:4px;transition:color .15s,background .15s;
+  }
+  .nav-sections a:hover{color:var(--purple)}
+  .nav-sections a.is-active{color:var(--orange)}
+  .nav-dots{display:flex;gap:6px;margin-left:14px}
+  .nav-dots span{width:7px;height:7px;border-radius:50%;background:rgba(42,14,84,0.2);transition:background .2s}
+  .nav-dots span.is-active{background:var(--orange)}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  /* SECTION + SLIDE */
+  section.chapter{scroll-margin-top:0}
+  .slide{
+    position:relative;
+    min-height:100vh;
+    display:flex;flex-direction:column;
+    padding:var(--slide-top) var(--slide-x) 0;
+    background:var(--cream);
+    color:var(--purple);
+    overflow:hidden;
+  }
+  .slide--dark{background:var(--purple);color:var(--white)}
+  .slide__inner{flex:1;display:flex;flex-direction:column;justify-content:flex-start;max-width:var(--content-max);width:100%;margin:0 auto;position:relative;z-index:2}
+  .slide__footer{
+    margin-top:auto;display:flex;align-items:center;justify-content:space-between;
+    padding:18px var(--slide-x);background:var(--cream-darker);
+    margin-left:calc(-1 * var(--slide-x));margin-right:calc(-1 * var(--slide-x));
+    position:relative;z-index:2;
+  }
+  .slide--dark .slide__footer{background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.65)}
+  .footer-right{display:flex;align-items:center;gap:14px}
+  .pill{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--orange);color:#fff;
+    font-size:11px;font-weight:600;letter-spacing:0.04em;
+    padding:7px 14px;border-radius:999px;
+  }
+  .pill::before{content:"";width:7px;height:7px;border-radius:50%;background:#fff}
+  .footer-right .by{display:none}
+  .slide--dark .footer-right .by{display:none}
+  .page-num{position:absolute;bottom:12px;left:var(--slide-x);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.45);z-index:3}
+  .page-num-r{position:absolute;bottom:12px;right:var(--slide-x);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.45);z-index:3}
 
-  body {
-    font-family: var(--sans);
-    background: var(--epa-cream);
-    color: var(--epa-ink);
-    font-weight: 400;
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+  /* TYPOGRAPHY */
+  .eyebrow{
+    font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--orange);margin-bottom:24px;
   }
+  .slide--dark .eyebrow{color:var(--white);opacity:0.85}
+  .eyebrow--orange-on-dark{color:var(--orange);opacity:1}
+  .title{
+    font-weight:700;line-height:1.02;letter-spacing:-0.02em;color:var(--purple);
+    font-size:clamp(36px,4.5vw,68px);
+    margin-bottom:24px;
+  }
+  .slide--dark .title{color:var(--white)}
+  .title .o{color:var(--orange)}
+  .title--hero{font-size:clamp(72px,9vw,130px);font-weight:800;letter-spacing:-0.03em;line-height:0.95}
+  .title--section{font-size:clamp(72px,8vw,120px);font-weight:700;letter-spacing:-0.025em}
+  .subhead{font-size:clamp(15px,1.1vw,18px);color:var(--body);max-width:60ch;margin-bottom:0}
+  .slide--dark .subhead{color:rgba(255,255,255,0.75)}
+  .tagline{font-size:14px;color:var(--purple);font-weight:600}
 
-  em, i { font-style: normal; }
+  /* COVER */
+  .cover{padding:0 var(--slide-x);background:var(--cream)}
+  .cover .slide__inner{
+    justify-content:center;align-items:center;text-align:center;
+    max-width:1120px;padding:132px 0 270px;
+  }
+  .cover .title--hero{
+    margin-bottom:20px;max-width:1120px;
+    font-size:clamp(72px,7.6vw,122px);
+    line-height:0.88;
+  }
+  .cover .subhead{
+    margin:0 auto;text-align:center;max-width:64ch;
+    font-size:clamp(18px,1.35vw,22px);line-height:1.35;
+    color:var(--purple);font-weight:600;
+  }
+  .cover .tagline{
+    position:static;transform:none;margin-top:28px;padding:4px 0 7px;border-top:0;
+    max-width:720px;color:var(--purple);font-family:'Manrope',Arial,sans-serif;
+    font-size:13px;font-weight:800;line-height:1.6;
+    letter-spacing:0.09em;text-transform:uppercase;
+    white-space:nowrap;
+  }
+  .cover-logo{display:none}
+  .cover-pill{display:none}
+  .halftone-cover{
+    position:absolute;left:0;right:0;bottom:-1px;height:39%;
+    pointer-events:none;z-index:1;opacity:1;
+    background:url('da-dot-wave.png') center bottom/100% 100% no-repeat;
+  }
+  .halftone-cover svg{display:none}
+  .top-session .pill{border-radius:0;padding:10px 18px;font-weight:800}
 
-  .page {
-    max-width: 1180px;
-    margin: 0 auto;
-    background: var(--epa-paper);
-    box-shadow: 0 0 60px rgba(14, 18, 53, 0.04);
+  /* SECTION OPENER */
+  .opener{position:relative}
+  .opener .slide__inner{padding-top:60px;justify-content:flex-end;padding-bottom:140px}
+  .opener .section-no{
+    position:absolute;top:48px;right:var(--slide-x);
+    font-size:clamp(72px,7vw,104px);font-weight:400;color:var(--white);line-height:1;letter-spacing:-0.02em;
+    z-index:3;
   }
+  .opener .accent-rect{position:absolute;top:0;right:120px;width:36px;height:54px;background:var(--orange);z-index:3}
+  .opener .title--section{max-width:14ch}
+  .opener .subhead{color:rgba(255,255,255,0.75);margin-top:10px}
+  .halftone-field{position:absolute;inset:0;pointer-events:none;z-index:1;opacity:0.85}
 
-  section {
-    padding: 80px 80px;
-    border-bottom: 1px solid var(--epa-rule);
+  /* CARDS */
+  .grid{
+    display:grid;gap:22px;
+    grid-template-columns:repeat(var(--cols,4),1fr);
+    margin-top:36px;
   }
-  section:last-child { border-bottom: none; }
+  .card{
+    background:var(--white);
+    padding:28px 24px 32px;
+    border:1px solid var(--hairline);
+    display:flex;flex-direction:column;
+    min-height:280px;
+  }
+  .card__label{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
+  .card__num{font-size:40px;font-weight:700;color:var(--purple);line-height:1;margin-bottom:14px;letter-spacing:-0.02em}
+  .card__head{font-size:22px;font-weight:600;color:var(--purple);margin-bottom:14px;line-height:1.15}
+  .card__body{font-size:14px;color:var(--body);line-height:1.55}
+  .card--filled{background:var(--purple);color:var(--white);border-color:var(--purple)}
+  .card--filled .card__label{color:#fff;opacity:0.7}
+  .card--filled .card__num,.card--filled .card__head{color:#fff}
+  .card--filled .card__body{color:rgba(255,255,255,0.85)}
+  .grid-hairline{height:1px;background:var(--hairline);margin:32px 0 0}
+  .grid-closer{font-size:14px;color:var(--body);margin-top:24px;max-width:80ch}
 
-  .masthead {
-    background: var(--epa-navy);
-    color: var(--epa-paper);
-    padding: 32px 80px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 4px solid var(--epa-gold);
+  /* DARK CARDS */
+  .slide--dark .grid{margin-top:36px}
+  .card--dark{
+    background:transparent;padding:24px 18px 24px;border:none;
+    border-top:2px solid var(--orange);
+    min-height:240px;
   }
-  .masthead-left {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.75);
-  }
-  .p-mark {
-    width: 32px;
-    height: 32px;
-    background: var(--epa-gold);
-    color: var(--epa-navy);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--serif);
-    font-weight: 800;
-    font-size: 22px;
-    line-height: 1;
-    transform: rotate(45deg);
-  }
-  .p-mark span { transform: rotate(-45deg); }
-  .masthead-right {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.75);
-  }
+  .card--dark .card__label{color:#fff;opacity:0.7;margin-bottom:16px}
+  .card--dark .card__num,.card--dark .card__head{color:#fff}
+  .card--dark .card__body{color:rgba(255,255,255,0.78)}
+  .card--dark.is-accent{background:rgba(232,74,42,0.08);border-top-color:var(--orange);padding-left:22px;padding-right:22px}
 
-  .hero {
-    padding: 100px 80px 80px;
-    background: linear-gradient(180deg, var(--epa-paper) 0%, var(--epa-cream) 100%);
-    position: relative;
-    overflow: hidden;
+  /* STAT ROW */
+  .stats{
+    display:grid;gap:32px;
+    grid-template-columns:repeat(var(--stat-cols,4),1fr);
+    margin-top:48px;
   }
-  .hero::after {
-    content: '';
-    position: absolute;
-    right: -100px;
-    top: 50%;
-    width: 400px;
-    height: 400px;
-    background: var(--epa-navy);
-    transform: translateY(-50%) rotate(45deg);
-    opacity: 0.025;
-  }
-  .hero-eyebrow {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--epa-navy);
-    margin-bottom: 32px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .hero-eyebrow::before {
-    content: '';
-    width: 32px;
-    height: 1px;
-    background: var(--epa-navy);
-  }
-  .hero h1 {
-    font-family: var(--serif);
-    font-weight: 400;
-    font-size: clamp(48px, 5.5vw, 76px);
-    line-height: 1.02;
-    letter-spacing: -0.02em;
-    color: var(--epa-navy-ink);
-    margin-bottom: 32px;
-    max-width: 900px;
-  }
-  .hero h1 .accent {
-    color: var(--epa-navy);
-    font-weight: 300;
-  }
-  .hero-lede {
-    font-family: var(--serif);
-    font-size: 22px;
-    line-height: 1.5;
-    font-weight: 300;
-    color: var(--epa-muted);
-    max-width: 720px;
-    margin-bottom: 48px;
-  }
-  .hero-meta {
-    display: flex;
-    gap: 48px;
-    padding-top: 32px;
-    border-top: 1px solid var(--epa-rule);
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--epa-muted);
-    flex-wrap: wrap;
-  }
-  .hero-meta strong {
-    display: block;
-    color: var(--epa-navy-ink);
-    font-weight: 600;
-    font-size: 13px;
-    letter-spacing: 0.08em;
-    margin-top: 6px;
-  }
+  .stat{}
+  .stat__label{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+  .slide--dark .stat__label{color:rgba(255,255,255,0.6)}
+  .stat__val{font-size:clamp(48px,5.5vw,84px);font-weight:700;letter-spacing:-0.03em;line-height:1;color:var(--purple);margin-bottom:18px;display:flex;align-items:baseline}
+  .slide--dark .stat__val{color:#fff}
+  .stat__val .o{color:var(--orange)}
+  .stat__desc{font-size:13px;color:var(--body);line-height:1.5}
+  .slide--dark .stat__desc{color:rgba(255,255,255,0.75)}
 
-  .section-header {
-    margin-bottom: 56px;
-    display: flex;
-    align-items: flex-start;
-    gap: 24px;
+  /* PULL QUOTE BAR */
+  .pq{
+    background:var(--purple);color:#fff;
+    padding:24px 28px 24px 36px;
+    position:relative;
+    margin-top:36px;
+    font-size:18px;font-weight:500;line-height:1.4;
+    max-width:1100px;
   }
-  .section-number {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    color: var(--epa-navy);
-    padding-top: 8px;
-    flex-shrink: 0;
-    width: 80px;
-  }
-  .section-title { flex: 1; }
-  .section-title .eyebrow {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--epa-navy);
-    margin-bottom: 12px;
-  }
-  .section-title h2 {
-    font-family: var(--serif);
-    font-weight: 400;
-    font-size: clamp(36px, 4vw, 52px);
-    line-height: 1.05;
-    letter-spacing: -0.015em;
-    color: var(--epa-navy-ink);
-  }
-  .section-title h2 .accent {
-    color: var(--epa-navy);
-    font-weight: 300;
-  }
-  .section-title .subtitle {
-    font-family: var(--serif);
-    font-size: 19px;
-    line-height: 1.55;
-    font-weight: 300;
-    color: var(--epa-muted);
-    margin-top: 16px;
-    max-width: 720px;
-  }
+  .pq::before{content:"";position:absolute;left:18px;top:18px;bottom:18px;width:3px;background:var(--orange)}
 
-  .channel-divider {
-    background: var(--epa-navy);
-    color: var(--epa-paper);
-    padding: 32px 80px;
-    margin: 0 -80px;
-    display: flex;
-    align-items: center;
-    gap: 24px;
-  }
-  .channel-divider .num {
-    font-family: var(--serif);
-    font-size: 56px;
-    font-weight: 300;
-    line-height: 1;
-    color: var(--epa-gold);
-  }
-  .channel-divider .meta { flex: 1; }
-  .channel-divider .meta .lbl {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.6);
-    margin-bottom: 6px;
-  }
-  .channel-divider .meta .ttl {
-    font-family: var(--serif);
-    font-size: 28px;
-    font-weight: 500;
-    letter-spacing: -0.01em;
-  }
-  .channel-divider .scope {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.7);
-    text-align: right;
-  }
-  .channel-divider .scope strong {
-    display: block;
-    color: var(--epa-paper);
-    font-size: 13px;
-    margin-top: 4px;
-    letter-spacing: 0.06em;
-  }
+  /* TWO COLUMN */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:36px;border:1px solid var(--hairline)}
+  .two-col__col{padding:36px 32px;min-height:340px}
+  .two-col__col--left{background:var(--cream);color:var(--purple)}
+  .two-col__col--right{background:var(--purple);color:#fff}
+  .two-col__h{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:14px;color:var(--muted)}
+  .two-col__col--right .two-col__h{color:rgba(255,255,255,0.6)}
+  .two-col__t{font-size:22px;font-weight:600;margin-bottom:22px;line-height:1.2}
+  .two-col__list{display:flex;flex-direction:column;gap:14px}
+  .two-col__list li{padding-left:22px;position:relative;font-size:15px;line-height:1.45}
+  .two-col__list li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:50%;background:var(--purple)}
+  .two-col__col--right .two-col__list li::before{background:#fff}
 
-  .numbers-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--epa-rule);
-    border: 1px solid var(--epa-rule);
-    margin-top: 32px;
-  }
-  .number-tile {
-    background: var(--epa-paper);
-    padding: 36px 32px;
-    position: relative;
-  }
-  .number-tile.accent { background: var(--epa-navy); color: var(--epa-paper); }
-  .number-tile.accent .tile-label,
-  .number-tile.accent .tile-note { color: rgba(255,255,255,0.7); }
-  .number-tile.accent .tile-value { color: var(--epa-paper); }
-  .number-tile.accent .tile-value sup { color: var(--epa-gold); }
-  .tile-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--epa-muted);
-    margin-bottom: 16px;
-  }
-  .tile-value {
-    font-family: var(--serif);
-    font-size: 54px;
-    font-weight: 400;
-    line-height: 1;
-    color: var(--epa-navy-ink);
-    letter-spacing: -0.03em;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: baseline;
-    gap: 4px;
-  }
-  .tile-value .unit {
-    font-size: 22px;
-    font-weight: 400;
-    color: var(--epa-muted);
-    margin-left: 4px;
-  }
-  .tile-value sup {
-    font-size: 13px;
-    color: var(--epa-navy);
-    font-family: var(--mono);
-    font-weight: 500;
-    margin-left: 2px;
-  }
-  .tile-note {
-    font-family: var(--sans);
-    font-size: 13px;
-    color: var(--epa-muted);
-    line-height: 1.45;
-  }
-  .tile-versus {
-    display: flex;
-    align-items: baseline;
-    gap: 14px;
-    margin-bottom: 10px;
-  }
-  .tile-versus .num {
-    font-family: var(--serif);
-    font-size: 54px;
-    font-weight: 400;
-    line-height: 1;
-    color: var(--epa-navy-ink);
-    letter-spacing: -0.03em;
-  }
-  .tile-versus .vs {
-    font-family: var(--mono);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    color: var(--epa-muted);
-    text-transform: uppercase;
-    padding-bottom: 6px;
-  }
-  .tile-versus .sub {
-    font-family: var(--sans);
-    font-size: 11px;
-    color: var(--epa-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-top: 4px;
-    display: block;
-  }
-  .tile-versus .col { display: flex; flex-direction: column; }
+  /* TRY THIS callout */
+  .try-this{background:var(--cream-darker);padding:18px 24px;display:grid;grid-template-columns:140px 1fr;gap:16px;align-items:start;margin-top:24px}
+  .try-this__l{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--orange);padding-top:2px}
+  .try-this__b{font-size:14px;color:var(--body);line-height:1.5}
 
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
+  /* INSIGHT SLIDE */
+  .insight .slide__inner{justify-content:center;padding-bottom:80px}
+  .insight .title{font-size:clamp(48px,6vw,88px);max-width:22ch;line-height:1.05}
+  .insight-meta{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:80px;max-width:1100px}
+  .insight-meta__line{position:relative;padding-top:14px;font-size:14px;line-height:1.55}
+  .insight-meta__line::before{content:"";position:absolute;top:0;left:0;width:40px;height:2px;background:var(--orange)}
+  .insight-meta__l{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;display:block}
+
+  /* CTA CLOSING */
+  .cta .slide__inner{justify-content:flex-end;padding-bottom:120px}
+  .cta .title{font-size:clamp(64px,7vw,108px);max-width:14ch}
+  .cta-divider{height:1px;background:rgba(232,74,42,0.55);margin:54px 0 24px;max-width:1300px}
+  .cta-contacts{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;max-width:1300px}
+  .cta-c__l{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+  .cta-c__v{font-size:15px;color:#fff;line-height:1.5}
+
+  /* QA */
+  .qa{background:#fff}
+  .qa .slide__inner{padding-top:80px;justify-content:center}
+  .qa-logo{position:absolute;top:48px;left:var(--slide-x)}
+  .qa-mark{font-size:clamp(120px,13vw,200px);font-weight:700;letter-spacing:-0.03em;line-height:1;margin-bottom:0}
+  .qa-mark .q,.qa-mark .a{color:var(--purple)}
+  .qa-mark .amp{color:var(--orange)}
+  .qa-eyebrow{font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);margin-bottom:20px}
+  .qa-prompts{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:120px;max-width:1300px}
+  .qa-prompt{border-top:1px solid var(--hairline);padding-top:18px}
+  .qa-prompt__l{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--orange);margin-bottom:14px}
+  .qa-prompt__b{font-size:22px;color:var(--purple);font-weight:500;line-height:1.3}
+  .qa-thanks{position:absolute;bottom:32px;left:var(--slide-x);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)}
+
+  /* POLL */
+  .poll-slide .slide__inner{justify-content:center;align-items:flex-start;padding-bottom:80px}
+  .poll{max-width:900px;width:100%}
+  .poll__q{font-size:clamp(32px,4vw,56px);font-weight:700;color:var(--purple);letter-spacing:-0.02em;line-height:1.1;margin-bottom:40px}
+  .poll__options{display:flex;flex-direction:column;gap:12px}
+  .poll__opt{
+    width:100%;text-align:left;padding:18px 22px;
+    background:#fff;border:1px solid var(--hairline);
+    font-size:16px;font-weight:500;color:var(--purple);
+    transition:all .15s;
+    position:relative;overflow:hidden;
   }
-  .col-channel {
-    border-top: 2px solid var(--epa-navy);
-    padding-top: 24px;
+  .poll__opt:hover{border-color:var(--orange);color:var(--orange)}
+  .poll__opt.is-voted{cursor:default}
+  .poll__opt .bar{
+    position:absolute;left:0;top:0;bottom:0;width:0;background:rgba(42,14,84,0.08);
+    transition:width .6s cubic-bezier(.3,.7,.3,1);z-index:0;
   }
-  .col-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 28px;
+  .poll__opt.is-mine .bar{background:rgba(232,74,42,0.18)}
+  .poll__opt .label,.poll__opt .pct{position:relative;z-index:1}
+  .poll__opt .pct{float:right;font-weight:700;color:var(--purple);opacity:0;transition:opacity .3s}
+  .poll__opt.is-voted .pct{opacity:1}
+  .poll__opt.is-mine{border-color:var(--orange);color:var(--orange)}
+  .poll__opt.is-mine .pct{color:var(--orange)}
+  .poll-live-note{
+    margin-top:22px;
+    font-family:'Manrope',Arial,sans-serif;
+    font-size:14px;
+    font-weight:800;
+    line-height:1.45;
+    color:var(--purple);
+    background:rgba(252,78,12,0.1);
+    border-left:4px solid var(--orange);
+    padding:14px 18px;
   }
-  .col-header h3 {
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 24px;
-    color: var(--epa-navy-ink);
-    letter-spacing: -0.01em;
+  .poll-reset{margin-top:20px;font-size:12px;color:var(--muted);text-decoration:underline;cursor:pointer;background:none;border:none;font-weight:500}
+  .poll-reset:hover{color:var(--orange)}
+  .poll__hint{font-size:13px;color:var(--muted);margin-top:16px}
+
+  
+  /* PRESENTER NOTES HIDDEN FOR SCREEN SHARE */
+  .notes{display:none}
+
+
+
+  /* APPENDIX QA LIST */
+  .qa-list{padding:80px 80px}
+  .qa-list h3{font-size:32px;font-weight:700;color:var(--purple);margin-bottom:8px;letter-spacing:-0.02em}
+  .qa-list .qa-eyebrow{margin-bottom:24px}
+  .qa-list ol{display:flex;flex-direction:column;gap:24px;margin-top:36px;max-width:1100px}
+  .qa-list li{padding:20px 24px;background:#fff;border:1px solid var(--hairline)}
+  .qa-list .q{font-size:16px;font-weight:600;color:var(--purple);margin-bottom:8px}
+  .qa-list .a{font-size:15px;color:var(--body);line-height:1.55}
+
+    /* RESPONSIVE */
+  @media (max-width:1100px){
+    :root{--slide-x:36px;--slide-top:54px}
+    .slide{padding:var(--slide-top) var(--slide-x) 0}
+    .slide__footer{padding:14px var(--slide-x);margin-left:calc(-1 * var(--slide-x));margin-right:calc(-1 * var(--slide-x))}
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .cta-contacts{grid-template-columns:repeat(2,1fr)}
+    .insight-meta,.qa-prompts{grid-template-columns:1fr}
+    .two-col{grid-template-columns:1fr}
+    .qa-list{padding-left:36px;padding-right:36px}
+    .topnav{padding:30px var(--slide-x) 0}
+    .topnav .brand-logo{height:44px}
+    .top-session .pill{font-size:10px;padding:6px 11px}
+    .cover .slide__inner{padding-top:118px;padding-bottom:210px}
+    .cover .tagline{max-width:56ch;white-space:normal;line-height:1.55}
+    .nav-sections{display:none}
   }
-  .col-header .tag {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--epa-good);
-    padding: 4px 10px;
-    border: 1px solid var(--epa-good);
-  }
-  .col-header .tag.warn {
-    color: var(--epa-warn);
-    border-color: var(--epa-warn);
-  }
-  .finding {
-    padding: 18px 0;
-    border-bottom: 1px solid var(--epa-rule);
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-  }
-  .finding:last-child { border-bottom: none; }
-  .finding-icon {
-    flex-shrink: 0;
-    width: 18px;
-    height: 18px;
-    margin-top: 2px;
-    color: var(--epa-good);
-  }
-  .finding-icon.warn { color: var(--epa-warn); }
-  .finding-text {
-    font-size: 15px;
-    line-height: 1.55;
-    color: var(--epa-ink);
-  }
-  .finding-text strong {
-    color: var(--epa-navy-ink);
-    font-weight: 600;
+  @media (max-width:680px){
+    :root{--slide-x:24px;--slide-top:44px}
+    .topnav{padding-top:22px}
+    .topnav .brand-logo{height:44px}
+    .top-session{display:none}
+    .cover .title--hero{font-size:clamp(52px,17vw,78px)}
+    .cover .slide__inner{padding-top:112px;padding-bottom:175px}
+    .grid{grid-template-columns:1fr}
+    .stats{grid-template-columns:1fr}
+    .cta-contacts{grid-template-columns:1fr}
   }
 
-  .diagnosis-band {
-    background: var(--epa-navy-ink);
-    color: var(--epa-paper);
-    padding: 72px 80px;
-    margin: 0 -80px;
-    margin-bottom: 64px;
-    position: relative;
-    overflow: hidden;
+
+
+  /* CONSISTENT PRESENTATION SPACING */
+  .slide:not(.cover):not(.opener):not(.cta):not(.qa) .slide__inner{padding-top:4px;padding-bottom:42px}
+  .title{margin-bottom:22px}
+  .eyebrow{margin-bottom:22px}
+  .grid{gap:24px;margin-top:40px}
+  .stats{gap:34px;margin-top:42px}
+  .two-col{margin-top:40px}
+  .grid-closer{margin-top:24px}
+  .try-this{margin-top:24px}
+  .pq{margin-top:34px}
+  .card{padding:26px 24px 30px}
+  .card__label{margin-bottom:16px}
+  .card__num{margin-bottom:14px}
+  .card__head{margin-bottom:14px}
+  .slide--dark .grid{margin-top:40px}
+  .opener .slide__inner{padding-top:72px;justify-content:flex-end;padding-bottom:128px}
+  .opener .accent-rect{right:calc(var(--slide-x) + 40px)}
+  .opener .section-no{right:var(--slide-x)}
+  .halftone-field{
+    position:absolute;inset:0;pointer-events:none;z-index:1;opacity:0.26;
+    background:url('da-dot-field.png') center bottom/cover no-repeat;
   }
-  .diagnosis-band::before {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
-    width: 300px;
-    height: 300px;
-    background: var(--epa-gold);
-    transform: translate(50%, -50%) rotate(45deg);
-    opacity: 0.05;
+  .halftone-field svg{display:none}
+  .notes{display:none}
+
+  /* DECK-WIDE VISUAL DIRECTION */
+  body{font-family:'Manrope',Arial,sans-serif}
+  .slide{
+    padding:86px var(--slide-x) 0;
+    background:var(--cream);
   }
-  .diagnosis-band h3 {
-    font-family: var(--serif);
-    font-weight: 300;
-    font-size: 38px;
-    line-height: 1.15;
-    letter-spacing: -0.015em;
-    max-width: 800px;
-    margin-bottom: 12px;
+  .slide:not(.cover):not(.opener):not(.cta):not(.qa) .slide__inner{
+    padding-top:10px;
+    padding-bottom:56px;
   }
-  .diagnosis-band h3 .gold {
-    color: var(--epa-gold);
-    font-weight: 400;
+  .eyebrow,
+  .card__label,
+  .stat__label,
+  .two-col__h,
+  .try-this__l,
+  .insight-meta__l,
+  .cta-c__l,
+  .qa-eyebrow,
+  .qa-prompt__l,
+  .poll__hint,
+  .credit{
+    font-family:'Manrope',Arial,sans-serif;
+    font-weight:800;
+    line-height:1.35;
+    letter-spacing:0.105em;
   }
-  .diagnosis-band .source {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
+  .title,
+  .title--hero,
+  .title--section,
+  .card__num,
+  .card__head,
+  .stat__val,
+  .two-col__t,
+  .poll__q,
+  .qa-mark,
+  .qa-list h3{
+    font-family:'Archivo','Manrope',Arial,sans-serif;
+    font-weight:800;
   }
-  .diagnosis-band p {
-    font-family: var(--serif);
-    font-size: 18px;
-    font-weight: 300;
-    line-height: 1.55;
-    color: rgba(255,255,255,0.8);
-    max-width: 740px;
-    margin-top: 20px;
+  .title{
+    font-size:clamp(46px,5.2vw,82px);
+    line-height:0.96;
+    letter-spacing:-0.035em;
+    max-width:16.5ch;
+    margin-bottom:24px;
+  }
+  .slide:not(.cover):not(.opener):not(.cta):not(.qa) .title{
+    max-width:17.5ch;
+  }
+  .subhead{
+    font-family:'Manrope',Arial,sans-serif;
+    font-size:clamp(18px,1.35vw,23px);
+    line-height:1.42;
+    font-weight:600;
+    max-width:58ch;
+  }
+  .eyebrow{
+    color:var(--orange);
+    margin-bottom:24px;
+  }
+  .slide--dark{
+    background:var(--purple);
+  }
+  .slide--dark:not(.opener)::before,
+  .cta::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:1;
+    pointer-events:none;
+    background:url('da-dot-field.png') center bottom/cover no-repeat;
+    opacity:0.12;
+  }
+  .slide--dark .slide__inner,
+  .slide--dark .slide__footer,
+  .cta .slide__inner{
+    position:relative;
+    z-index:2;
+  }
+  .slide--dark .subhead{color:rgba(255,255,255,0.78)}
+  .slide--dark .eyebrow{color:rgba(255,255,255,0.76)}
+  .eyebrow--orange-on-dark{color:var(--orange)!important;opacity:1}
+
+  .slide__footer{
+    min-height:58px;
+    padding:14px var(--slide-x);
+    background:transparent;
+    border-top:1px solid rgba(39,0,77,0.12);
+  }
+  .slide--dark .slide__footer{
+    background:transparent;
+    border-top:1px solid rgba(255,255,255,0.18);
+  }
+  .slide__footer .brand-logo{
+    height:40px;
+    opacity:0.85;
+  }
+  .slide--dark .slide__footer .brand{
+    display:none;
+  }
+  .footer-right .pill{display:inline-flex;border-radius:0;padding:8px 14px;font-weight:800}
+  .footer-right .by{
+    display:none;
+  }
+  .slide--dark .footer-right .by{display:none}
+
+  .grid{
+    gap:24px;
+    margin-top:36px;
+    align-items:stretch;
+  }
+  .card{
+    background:rgba(255,255,255,0.76);
+    border:0;
+    border-top:5px solid var(--orange);
+    min-height:242px;
+    padding:26px 24px 28px;
+  }
+  .card__label{
+    color:var(--orange);
+    margin-bottom:18px;
+  }
+  .card__num{
+    color:var(--orange);
+    font-size:clamp(46px,4vw,64px);
+    line-height:0.9;
+    margin-bottom:18px;
+  }
+  .card__head{
+    color:var(--purple);
+    font-size:clamp(22px,1.8vw,30px);
+    line-height:1.08;
+    letter-spacing:-0.025em;
+  }
+  .card__body{
+    font-family:'Manrope',Arial,sans-serif;
+    color:var(--body);
+    font-size:15px;
+    line-height:1.55;
+  }
+  .card--filled{
+    background:var(--purple);
+    border-top-color:var(--orange);
+  }
+  .card--filled .card__label{color:rgba(255,255,255,0.74)}
+  .card--filled .card__num{color:var(--orange)}
+  .card--filled .card__head{color:#fff}
+  .card--filled .card__body{color:rgba(255,255,255,0.82)}
+  .slide--dark .card--dark{
+    background:rgba(255,255,255,0.035);
+    border-top:5px solid var(--orange);
+    padding:26px 22px 28px;
+    min-height:236px;
+  }
+  .slide--dark .card--dark.is-accent{
+    background:rgba(252,78,12,0.14);
+  }
+  .card--dark .card__label{color:rgba(255,255,255,0.72)}
+  .card--dark .card__num{color:var(--orange)}
+  .card--dark .card__head{color:#fff}
+  .card--dark .card__body{color:rgba(255,255,255,0.78)}
+  .grid[style*="--cols:5"]{gap:18px}
+  .grid[style*="--cols:5"] .card{
+    padding:24px 20px 26px;
+    min-height:260px;
+  }
+  .grid[style*="--cols:5"] .card__head{font-size:clamp(20px,1.45vw,24px)}
+  .grid[style*="--cols:5"] .card__body{font-size:14px}
+
+  .stats{
+    gap:36px;
+    margin-top:48px;
+  }
+  .stat{
+    border-top:3px solid var(--orange);
+    padding-top:20px;
+  }
+  .stat__label{
+    color:var(--muted);
+    margin-bottom:20px;
+  }
+  .slide--dark .stat__label{color:rgba(255,255,255,0.58)}
+  .stat__val{
+    font-size:clamp(62px,6.2vw,104px);
+    line-height:0.88;
+    letter-spacing:-0.045em;
+    margin-bottom:20px;
+  }
+  .stat__desc{
+    font-family:'Manrope',Arial,sans-serif;
+    font-size:15px;
+    line-height:1.5;
+  }
+  .stats[style*="--stat-cols:5"]{
+    grid-template-columns:repeat(5,minmax(0,1fr));
+    gap:24px;
+    margin-top:42px;
+  }
+  .stats[style*="--stat-cols:5"] .stat{
+    min-width:0;
+    padding-top:18px;
+  }
+  .stats[style*="--stat-cols:5"] .stat__label{
+    margin-bottom:18px;
+  }
+  .stats[style*="--stat-cols:5"] .stat__val{
+    font-size:clamp(38px,3.8vw,62px);
+    line-height:0.9;
+    white-space:nowrap;
+  }
+  .stats[style*="--stat-cols:5"] .stat__desc{
+    font-size:13px;
+    line-height:1.46;
   }
 
-  .pillars {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
+  .two-col{
+    border:0;
+    gap:24px;
+    margin-top:36px;
   }
-  .pillar {
-    background: var(--epa-paper);
-    border: 1px solid var(--epa-navy);
-    padding: 36px 32px;
-    position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  .two-col__col{
+    min-height:320px;
+    padding:34px 32px;
+    border-top:5px solid var(--orange);
   }
-  .pillar:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(44, 50, 115, 0.12);
+  .two-col__col--left{
+    background:rgba(255,255,255,0.78);
   }
-  .pillar-num {
-    font-family: var(--mono);
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--epa-navy);
-    letter-spacing: 0.18em;
-    margin-bottom: 24px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--epa-rule);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-transform: uppercase;
+  .two-col__col--right{
+    background:var(--purple);
   }
-  .pillar-num .num {
-    width: 28px;
-    height: 28px;
-    background: var(--epa-navy);
-    color: var(--epa-paper);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--mono);
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0;
+  .two-col__h{margin-bottom:18px}
+  .two-col__t{
+    font-size:clamp(24px,2.2vw,34px);
+    line-height:1.08;
+    letter-spacing:-0.03em;
+    margin-bottom:28px;
   }
-  .pillar h4 {
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 22px;
-    line-height: 1.2;
-    color: var(--epa-navy-ink);
-    margin-bottom: 16px;
-    letter-spacing: -0.01em;
-  }
-  .pillar p {
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--epa-muted);
-    margin-bottom: 20px;
-  }
-  .pillar ul {
-    list-style: none;
-    padding: 0;
-  }
-  .pillar ul li {
-    font-size: 13px;
-    line-height: 1.5;
-    color: var(--epa-ink);
-    padding: 8px 0;
-    padding-left: 20px;
-    position: relative;
-    border-top: 1px solid var(--epa-rule);
-  }
-  .pillar ul li:first-child { border-top: none; }
-  .pillar ul li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--epa-navy);
-    font-weight: 500;
+  .two-col__list{gap:16px}
+  .two-col__list li{
+    font-family:'Manrope',Arial,sans-serif;
+    font-size:16px;
+    line-height:1.48;
   }
 
-  .cta-examples {
-    background: var(--epa-gold-soft);
-    border-left: 4px solid var(--epa-gold);
-    padding: 32px 36px;
-    margin-top: 32px;
+  .pq{
+    background:var(--purple);
+    color:#fff;
+    border-left:0;
+    border-top:5px solid var(--orange);
+    padding:28px 32px 32px;
+    margin-top:40px;
+    font-family:'Manrope',Arial,sans-serif;
+    font-size:clamp(20px,1.65vw,28px);
+    font-weight:700;
+    line-height:1.35;
+    max-width:1080px;
   }
-  .cta-examples .lbl {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--epa-navy);
-    margin-bottom: 16px;
-  }
-  .cta-examples h4 {
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 17px;
-    color: var(--epa-navy-ink);
-    margin-bottom: 24px;
-    letter-spacing: -0.005em;
-  }
-  .cta-pair {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    align-items: stretch;
-  }
-  .cta-side {
-    padding: 20px;
-    background: var(--epa-paper);
-    border: 1px solid var(--epa-rule);
-  }
-  .cta-side .head {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-  }
-  .cta-side.bad .head { color: var(--epa-warn); }
-  .cta-side.good .head { color: var(--epa-good); }
-  .cta-side .ex {
-    font-family: var(--serif);
-    font-size: 16px;
-    line-height: 1.5;
-    color: var(--epa-ink);
-    margin-bottom: 8px;
-    font-weight: 400;
-  }
-  .cta-side .ex::before {
-    content: '"';
-    color: var(--epa-muted);
-    font-size: 20px;
-    margin-right: 2px;
-  }
-  .cta-side .ex::after {
-    content: '"';
-    color: var(--epa-muted);
-    font-size: 20px;
+  .pq::before{display:none}
+  .slide--dark .pq{
+    background:rgba(255,255,255,0.07)!important;
+    border-top-color:var(--orange);
   }
 
-  .closing {
-    background: var(--epa-navy);
-    color: var(--epa-paper);
-    padding: 100px 80px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+  .insight .slide__inner{
+    justify-content:center;
+    padding-bottom:92px;
   }
-  .closing::before, .closing::after {
-    content: '';
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    background: var(--epa-gold);
-    transform: rotate(45deg);
-    opacity: 0.06;
+  .insight .title{
+    font-size:clamp(58px,7vw,108px);
+    line-height:0.96;
+    max-width:16.5ch;
   }
-  .closing::before { top: -100px; left: -100px; }
-  .closing::after { bottom: -100px; right: -100px; }
-  .closing .eyebrow {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--epa-gold);
-    margin-bottom: 32px;
+  .insight .subhead{
+    max-width:54ch;
+    font-size:clamp(20px,1.65vw,29px);
   }
-  .closing h2 {
-    font-family: var(--serif);
-    font-weight: 300;
-    font-size: clamp(40px, 5vw, 64px);
-    line-height: 1.05;
-    letter-spacing: -0.015em;
-    max-width: 800px;
-    margin: 0 auto 24px;
+  .insight-meta{
+    margin-top:72px;
+    gap:48px;
   }
-  .closing h2 .gold {
-    color: var(--epa-gold);
-    font-weight: 400;
+  .insight-meta__line{
+    border-top:3px solid var(--orange);
+    padding-top:18px;
+    font-family:'Manrope',Arial,sans-serif;
+    font-size:16px;
   }
-  .closing-tagline {
-    font-family: var(--serif);
-    font-size: 18px;
-    font-weight: 300;
-    color: rgba(255,255,255,0.75);
-    max-width: 600px;
-    margin: 0 auto;
+  .insight-meta__line::before{display:none}
+
+  .opener .slide__inner{
+    padding-top:72px;
+    justify-content:flex-end;
+    padding-bottom:128px;
+  }
+  .opener .title--section{
+    max-width:12.5ch;
+    font-size:clamp(82px,8.4vw,134px);
+    line-height:0.92;
+  }
+  .opener .subhead{
+    font-size:clamp(18px,1.4vw,23px);
+    max-width:56ch;
+  }
+  .opener .section-no{
+    font-family:'Archivo','Manrope',Arial,sans-serif;
+    font-weight:400;
+    font-size:clamp(82px,7vw,118px);
+  }
+  .opener .accent-rect{
+    right:calc(var(--slide-x) + 40px);
+  }
+  .halftone-field{
+    opacity:0.28;
+    background:url('da-dot-field.png') center bottom/cover no-repeat;
+  }
+  .halftone-field svg{display:none}
+
+  .poll-slide .slide__inner{
+    justify-content:center;
+    align-items:center;
+    padding-bottom:96px;
+  }
+  .poll{
+    max-width:960px;
+  }
+  .poll__q{
+    font-size:clamp(48px,5.5vw,82px);
+    line-height:0.98;
+    letter-spacing:-0.04em;
+    margin-bottom:42px;
+  }
+  .poll__opt{
+    border:0;
+    border-left:5px solid transparent;
+    background:rgba(255,255,255,0.8);
+    padding:20px 24px;
+    font-family:'Manrope',Arial,sans-serif;
+    font-size:17px;
+    font-weight:700;
+  }
+  .poll__opt:hover,
+  .poll__opt.is-mine{
+    border-left-color:var(--orange);
+    color:var(--orange);
+  }
+  .poll__opt .bar{background:rgba(39,0,77,0.08)}
+  .poll__opt.is-mine .bar{background:rgba(252,78,12,0.18)}
+  .poll-live-note{
+    margin-top:22px;
+    font-family:'Manrope',Arial,sans-serif;
+    font-size:14px;
+    font-weight:800;
+    line-height:1.45;
+    color:var(--purple);
+    background:rgba(252,78,12,0.1);
+    border-left:4px solid var(--orange);
+    padding:14px 18px;
+  }
+  .poll-reset{
+    font-family:'Manrope',Arial,sans-serif;
+    font-weight:800;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    text-decoration:none;
   }
 
-  .footer {
-    background: var(--epa-navy-ink);
-    color: rgba(255,255,255,0.55);
-    padding: 32px 80px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
+  .try-this{
+    background:rgba(255,255,255,0.76);
+    border-top:4px solid var(--orange);
+    padding:22px 26px;
   }
-  .footer a {
-    color: rgba(255,255,255,0.75);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(255,255,255,0.3);
+  .try-this__b{
+    font-family:'Manrope',Arial,sans-serif;
+    font-size:16px;
   }
 
-  .footnote {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--epa-muted);
-    margin-top: 24px;
-    letter-spacing: 0.04em;
-    line-height: 1.5;
+  .cta .slide__inner{
+    justify-content:center;
+    padding-bottom:94px;
   }
-  .footnote sup { color: var(--epa-navy); margin-right: 4px; }
-
-  .diamond-divider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 40px 0;
-    gap: 12px;
+  .cta .title{
+    font-size:clamp(70px,7.8vw,126px);
+    max-width:12ch;
   }
-  .diamond-divider .diamond {
-    width: 8px;
-    height: 8px;
-    background: var(--epa-navy);
-    transform: rotate(45deg);
-    opacity: 0.4;
+  .cta-divider{
+    height:3px;
+    background:var(--orange);
+    margin:56px 0 28px;
   }
-  .diamond-divider .diamond.gold { background: var(--epa-gold); opacity: 1; }
-  .diamond-divider .line {
-    height: 1px;
-    width: 60px;
-    background: var(--epa-rule);
+  .cta-c__v{
+    font-family:'Manrope',Arial,sans-serif;
+    font-size:16px;
   }
 
-  @media (max-width: 900px) {
-    section, .masthead, .hero, .closing, .footer { padding-left: 32px; padding-right: 32px; }
-    .channel-divider, .diagnosis-band { margin: 0 -32px 48px; padding: 36px 32px; }
-    .numbers-grid { grid-template-columns: repeat(2, 1fr); }
-    .two-col { grid-template-columns: 1fr; gap: 40px; }
-    .pillars { grid-template-columns: 1fr; }
-    .cta-pair { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 42px; }
-    .section-header { flex-direction: column; gap: 8px; }
-    .channel-divider { flex-direction: column; align-items: flex-start; gap: 16px; }
-    .channel-divider .scope { text-align: left; }
-    .masthead { flex-direction: column; gap: 16px; align-items: flex-start; }
+  .qa{
+    background:var(--cream);
+  }
+  .qa .slide__inner{
+    padding-top:100px;
+  }
+  .qa-mark{
+    font-size:clamp(132px,14vw,220px);
+    line-height:0.86;
+  }
+  .qa-prompts{
+    margin-top:100px;
+    gap:56px;
+  }
+  .qa-prompt{
+    border-top:4px solid var(--orange);
+    padding-top:20px;
+  }
+  .qa-prompt__b{
+    font-family:'Archivo','Manrope',Arial,sans-serif;
+    font-size:clamp(24px,2.2vw,34px);
+    font-weight:800;
+    letter-spacing:-0.025em;
   }
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+  .qa-list{
+    background:var(--cream);
+    padding:90px var(--slide-x);
   }
-  .hero h1, .hero-lede, .hero-meta { animation: fadeUp 0.8s ease forwards; }
-  .hero-lede { animation-delay: 0.1s; opacity: 0; }
-  .hero-meta { animation-delay: 0.2s; opacity: 0; }
+  .qa-list ol{
+    max-width:1100px;
+    gap:18px;
+  }
+  .qa-list li{
+    background:rgba(255,255,255,0.78);
+    border:0;
+    border-top:4px solid var(--orange);
+    padding:22px 26px;
+  }
+  .qa-list .q{
+    font-family:'Archivo','Manrope',Arial,sans-serif;
+    font-size:22px;
+    letter-spacing:-0.02em;
+  }
+  .qa-list .a{
+    font-family:'Manrope',Arial,sans-serif;
+    font-size:16px;
+  }
 
+  @media (max-width:1100px){
+    .title{font-size:clamp(40px,8vw,74px)}
+    .subhead{font-size:18px}
+    .card{min-height:240px}
+    .grid[style*="--cols:5"]{grid-template-columns:repeat(2,1fr)}
+    .stats[style*="--stat-cols:5"]{grid-template-columns:repeat(2,1fr)}
+    .slide__footer .brand-logo{height:36px}
+    .footer-right .by{font-size:12px}
+  }
+  @media (max-width:680px){
+    .slide:not(.cover):not(.opener):not(.cta):not(.qa) .slide__inner{padding-bottom:38px}
+    .title{font-size:clamp(36px,13vw,56px);line-height:1}
+    .subhead{font-size:16px}
+    .grid,
+    .grid[style*="--cols:5"],
+    .stats,
+    .stats[style*="--stat-cols:5"]{grid-template-columns:1fr}
+    .two-col{gap:18px}
+    .two-col__col{min-height:0;padding:28px 24px}
+    .card{padding:26px 22px;min-height:0}
+    .slide__footer{min-height:50px}
+    .slide__footer .brand-logo{height:32px}
+    .footer-right .by{display:none}
+    .opener .title--section{font-size:clamp(52px,16vw,82px)}
+    .opener .slide__inner{padding-bottom:90px}
+    .poll__q{font-size:clamp(38px,13vw,60px)}
+  }
+
+  /* FINAL CREDIT */
+  .credit{padding:24px 80px;background:var(--purple);color:rgba(255,255,255,0.6);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
 </style>
 </head>
 <body>
 
-<div class="page">
-
-  <div class="masthead">
-    <div class="masthead-left">
-      <div class="p-mark"><span>P</span></div>
-      <div>A Strategic Review · Prepared for EPA</div>
+<header class="topnav">
+  <a href="#cover" class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></a>
+  <nav class="nav-sections" id="navSections">
+    <a href="#s1">S1 Opening</a>
+    <a href="#s2">S2 System</a>
+    <a href="#s3">S3 Segmentation</a>
+    <a href="#s4">S4 Personalization</a>
+    <a href="#s5">S5 Automation</a>
+    <a href="#s6">S6 CRM</a>
+    <a href="#s7">S7 Compliance</a>
+    <a href="#s8">S8 Cross-channel</a>
+    <a href="#s9">S9 Monday</a>
+    <div class="nav-dots" id="navDots">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
     </div>
-    <div class="masthead-right">The Right Street · May 2026</div>
+  </nav>
+  <div class="top-session"><span class="pill">Live Session</span></div>
+</header>
+
+<main>
+
+<!-- ================== SECTION 1 ================== -->
+<section class="chapter" id="s1">
+
+  <!-- COVER -->
+  <div class="slide cover" id="cover">
+    <div class="cover-logo brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div>
+    <div class="cover-pill"><span class="pill">Live Session</span></div>
+    <div class="slide__inner">
+      <h1 class="title title--hero"><span class="p">Email Marketing</span><br><span class="o">for Photonics.</span></h1>
+      <p class="subhead">Automation and personalization in B2B, for expert buyers, small lists, and long cycles.</p>
+      <div class="tagline">EPIC ONLINE MEETING · DIGITAL ALLEY</div>
+    </div>
+    <div class="halftone-cover" data-halftone="wave"></div>
   </div>
 
-  <section class="hero">
-    <div class="hero-eyebrow">European Parking Association · Digital Presence Audit</div>
-    <h1>EPA has the authority. <span class="accent">The work is to package it.</span></h1>
-    <p class="hero-lede">
-      The European Parking Association owns the right conversation, posts at a healthy frequency, and has a credible voice across Brussels. The next step is making the channels easier to recognise, faster to read, and more confident in their point of view.
-    </p>
-    <div class="diamond-divider">
-      <div class="line"></div>
-      <div class="diamond"></div>
-      <div class="diamond gold"></div>
-      <div class="diamond"></div>
-      <div class="line"></div>
-    </div>
-    <div class="hero-meta">
-      <div>Scope<strong>Website + LinkedIn</strong></div>
-      <div>Sample period<strong>Beginning of 2026</strong></div>
-      <div>Followers<strong>3,591</strong></div>
-      <div>Audit date<strong>May 2026</strong></div>
-    </div>
-  </section>
-
-  <section>
-    <div class="channel-divider">
-      <div class="num">01</div>
-      <div class="meta">
-        <div class="lbl">Channel One</div>
-        <div class="ttl">LinkedIn</div>
-      </div>
-      <div class="scope">
-        Sample period<strong>Beginning of 2026</strong>
-      </div>
-    </div>
-
-    <div class="section-header">
-      <div class="section-number">01.1</div>
-      <div class="section-title">
-        <div class="eyebrow">The numbers</div>
-        <h2>What we found <span class="accent">at a glance</span></h2>
-        <p class="subtitle">35 posts published between January and early May 2026. Engagement counted across the full sample.</p>
-      </div>
-    </div>
-
-    <div class="numbers-grid">
-      <div class="number-tile">
-        <div class="tile-label">Audience</div>
-        <div class="tile-value">3,591</div>
-        <div class="tile-note">LinkedIn followers. The reach exists.</div>
-      </div>
-      <div class="number-tile">
-        <div class="tile-label">Posting cadence</div>
-        <div class="tile-value">2.5<span class="unit">/wk</span></div>
-        <div class="tile-note">35 posts in 3 months. Frequency exists - but bursts and silences (see findings).</div>
-      </div>
-      <div class="number-tile">
-        <div class="tile-label">Format mix</div>
-        <div class="tile-versus">
-          <div class="col">
-            <div class="num">29</div>
-            <div class="sub">Image-led</div>
-          </div>
-          <div class="vs">vs</div>
-          <div class="col">
-            <div class="num">6</div>
-            <div class="sub">Video-led</div>
-          </div>
+  <!-- TWO COLUMN: E-COM vs PHOTONICS -->
+  <div class="slide">
+    <div class="slide__inner">
+      <div class="eyebrow">The reality you are actually selling into</div>
+      <h2 class="title">Photonics email is a <span class="o">different game</span>.</h2>
+      <p class="subhead">The numbers behind every "best practice" you read online were written for a buyer who is not yours.</p>
+      <div class="two-col">
+        <div class="two-col__col two-col__col--left">
+          <div class="two-col__h">E-commerce email reality</div>
+          <div class="two-col__t">50,000 contacts.<br>3 sends a week.<br>5-minute decision.</div>
+          <ul class="two-col__list">
+            <li>Mass distribution lists</li>
+            <li>Frequent, lightweight sends</li>
+            <li>Single decision-maker</li>
+            <li>Discount-driven CTAs</li>
+          </ul>
         </div>
-        <div class="tile-note">Video sits at the top of the distribution, but is the smallest share.</div>
-      </div>
-      <div class="number-tile accent">
-        <div class="tile-label">Average reactions / post</div>
-        <div class="tile-value">28<span class="unit">avg</span></div>
-        <div class="tile-note">Median: 25. 991 total reactions across 35 posts.</div>
-      </div>
-      <div class="number-tile accent">
-        <div class="tile-label">Engagement rate / post</div>
-        <div class="tile-value">0.79<span class="unit">%</span></div>
-        <div class="tile-note">B2B LinkedIn benchmark sits at ~3.5%. There is real upside.</div>
-      </div>
-      <div class="number-tile accent">
-        <div class="tile-label">Top 10 vs Bottom 10</div>
-        <div class="tile-value">4.9<span class="unit">×</span></div>
-        <div class="tile-note">Top 10 avg 49 reactions, bottom 10 avg 10. No system enforcing consistency.</div>
-      </div>
-    </div>
-
-    <p class="footnote">
-      Engagement rate per post = average reactions ÷ follower count (28.3 ÷ 3,591 = 0.79%). B2B benchmark: Socialinsider 2024 LinkedIn Industry Benchmarks Report.
-    </p>
-  </section>
-
-  <section>
-    <div class="section-header">
-      <div class="section-number">01.2</div>
-      <div class="section-title">
-        <div class="eyebrow">The diagnosis · LinkedIn</div>
-        <h2>What works, <span class="accent">where engagement leaks</span></h2>
-        <p class="subtitle">EPA is doing the work. The foundation is there. The gap is in how that work gets packaged for the feed.</p>
-      </div>
-    </div>
-
-    <div class="two-col">
-
-      <div class="col-channel">
-        <div class="col-header">
-          <h3>What's already working</h3>
-          <div class="tag">Keep</div>
-        </div>
-
-        <div class="finding">
-          <svg class="finding-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3,9 7,13 15,5"/></svg>
-          <div class="finding-text"><strong>Owns the right conversation.</strong> AI, APDS, kerbside management, EU affairs, traffic and parking integration. The topics map cleanly to where the sector is moving.</div>
-        </div>
-        <div class="finding">
-          <svg class="finding-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3,9 7,13 15,5"/></svg>
-          <div class="finding-text"><strong>Content pillars are established.</strong> Event announcements, news updates, video coverage. The structure is there - it just needs sharper templates and a clearer system.</div>
-        </div>
-        <div class="finding">
-          <svg class="finding-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3,9 7,13 15,5"/></svg>
-          <div class="finding-text"><strong>Proves real activity.</strong> Events, working groups, publications, partnerships, member initiatives. The page shows EPA actually does what it claims.</div>
-        </div>
-        <div class="finding">
-          <svg class="finding-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3,9 7,13 15,5"/></svg>
-          <div class="finding-text"><strong>Top performers are videos.</strong> The highest-reaction posts in the sample are video-led (66, 67, 57 reactions). Motion and people consistently sit at the top of the distribution.</div>
-        </div>
-        <div class="finding">
-          <svg class="finding-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3,9 7,13 15,5"/></svg>
-          <div class="finding-text"><strong>Events become multi-post moments.</strong> Intertraffic Amsterdam was turned into a sustained series across announcements, sessions, recaps and reposts. The right instinct - just needs sharper templates.</div>
-        </div>
-        <div class="finding">
-          <svg class="finding-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3,9 7,13 15,5"/></svg>
-          <div class="finding-text"><strong>Tone is credible.</strong> Collaborative, appropriate for a European association. The voice is not the issue.</div>
-        </div>
-      </div>
-
-      <div class="col-channel">
-        <div class="col-header">
-          <h3>Where engagement leaks</h3>
-          <div class="tag warn">Fix</div>
-        </div>
-
-        <div class="finding">
-          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
-          <div class="finding-text"><strong>Cadence is bursty, not paced.</strong> Three posts in one week, then silence for three weeks. The content doesn't lose relevance, but the algorithm needs to be fed every week. A steady weekly post outperforms uneven bursts.</div>
-        </div>
-        <div class="finding">
-          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
-          <div class="finding-text"><strong>Too many links in the body.</strong> LinkedIn deprioritises posts that send traffic off-platform. One link in-post is fine. Three or four becomes a drag on reach. Those belong in the first comment.</div>
-        </div>
-        <div class="finding">
-          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
-          <div class="finding-text"><strong>Templates don't scale.</strong> The speaker-announcement template works at 7 speakers but breaks with 2 - visible empty diagonal space where speakers should be.</div>
-        </div>
-        <div class="finding">
-          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
-          <div class="finding-text"><strong>Tone wobbles in video.</strong> Some clips are playful and energetic, others are calm and reflective. No rule for which register fits which moment.</div>
-        </div>
-        <div class="finding">
-          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
-          <div class="finding-text"><strong>Brand drift across assets.</strong> Colours and typography wobble - visible effort, but no enforced system. The account isn't yet instantly recognisable in the feed.</div>
-        </div>
-        <div class="finding">
-          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
-          <div class="finding-text"><strong>CTAs send people off-platform.</strong> "Check out this report", "fill out this form". LinkedIn doesn't reward this - the algorithm wants people staying and commenting, not clicking away.</div>
+        <div class="two-col__col two-col__col--right">
+          <div class="two-col__h">Photonics email reality</div>
+          <div class="two-col__t">800 contacts.<br>1 outreach round every 2 weeks.<br>12-month decision.</div>
+          <ul class="two-col__list">
+            <li>Hand-built technical lists</li>
+            <li>Heavy, slow sends</li>
+            <li>PhD evaluating at 11pm</li>
+            <li>Application fit is the CTA</li>
+          </ul>
         </div>
       </div>
     </div>
-  </section>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
 
-  <section>
-    <div class="diagnosis-band">
-      <div class="source">The pattern</div>
-      <h3 style="margin-top: 16px;">The foundation is there. <span class="gold">Here's how to improve the packaging.</span></h3>
-      <p>
-        Healthy cadence, right topics, right audience, visible production effort. The work in front of EPA is in pacing, format mix, template flexibility, brand consistency, and how posts ask for engagement.
-      </p>
-    </div>
-
-    <div class="section-header">
-      <div class="section-number">01.3</div>
-      <div class="section-title">
-        <div class="eyebrow">The fix · LinkedIn</div>
-        <h2>Three workstreams, <span class="accent">not one</span></h2>
-        <p class="subtitle">Splitting the work into three concrete tracks, each with its own deliverable.</p>
-      </div>
-    </div>
-
-    <div class="pillars">
-
-      <div class="pillar">
-        <div class="pillar-num"><span class="num">1</span>System</div>
-        <h4>Rebuild the templates</h4>
-        <p>A flexible visual system that flexes with content. One-time investment, infinite reuse.</p>
-        <ul>
-          <li>Speaker template with 1, 2, 3, 4+ variants - no empty space</li>
-          <li>Branded video lower-thirds and end cards</li>
-          <li>Typography rules enforced across every asset</li>
-          <li>Your recurring formats</li>
+  <!-- POLL 1 -->
+  <div class="slide poll-slide">
+    <div class="slide__inner">
+      <div class="eyebrow">Audience pulse · Poll 01</div>
+      <div class="poll" data-poll-id="1" data-weights="20,32,28,20">
+        <p class="poll__q">Where are you with email marketing today?</p>
+        <ul class="poll__options">
+          <li><button class="poll__opt" data-opt="A"><span class="bar"></span><span class="label">A. We send irregularly when we have news</span><span class="pct"></span></button></li>
+          <li><button class="poll__opt" data-opt="B"><span class="bar"></span><span class="label">B. We have a newsletter on a schedule</span><span class="pct"></span></button></li>
+          <li><button class="poll__opt" data-opt="C"><span class="bar"></span><span class="label">C. We run automated nurture flows</span><span class="pct"></span></button></li>
+          <li><button class="poll__opt" data-opt="D"><span class="bar"></span><span class="label">D. We have a full lifecycle system tied to CRM</span><span class="pct"></span></button></li>
         </ul>
+        <p class="poll-live-note">Run this as a Kahoot or Slido question, or ask people to answer A-D in chat.</p>
       </div>
+    </div>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
 
-      <div class="pillar">
-        <div class="pillar-num"><span class="num">2</span>Voice</div>
-        <h4>Define the messaging house</h4>
-        <p>The single document that governs everything EPA says on LinkedIn - and outside it.</p>
-        <ul>
-          <li>The value each post type delivers to its reader</li>
-          <li>Vocabulary EPA uses, and vocabulary EPA avoids</li>
-          <li>Key messages by pillar - policy, future of parking, community, knowledge, partners</li>
-          <li>Hook formula: insight before activity, sector implication before logistics</li>
-          <li>One message, one audience, one CTA per post</li>
+  <!-- TRANSITION INSIGHT -->
+  <div class="slide insight">
+    <div class="slide__inner">
+      <div class="eyebrow">Where most programs actually break</div>
+      <h2 class="title">Not at the automation. <span class="o">At the operating system.</span></h2>
+      <p class="subhead">Sporadic email is the real failure mode in our industry. The fix is not "send more". The fix is to build a small, repeatable system that runs whether you are inspired that week or not.</p>
+    </div>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
+
+</section>
+
+<!-- ================== SECTION 2 ================== -->
+<section class="chapter" id="s2">
+
+  <div class="slide slide--dark opener">
+    <div class="accent-rect"></div>
+    <div class="section-no">01</div>
+    <div class="halftone-field" data-halftone="field"></div>
+    <div class="slide__inner">
+      <div class="eyebrow eyebrow--orange-on-dark">Part 01 · The Operating System</div>
+      <h2 class="title title--section">The system<br>before the<br><span class="o">sends.</span></h2>
+      <p class="subhead">Calendar discipline, content mix, four-week rhythm, evidence-first.</p>
+    </div>
+    <span class="page-num">Part 01</span><span class="page-num-r">02 · System</span>
+  </div>
+
+  <div class="slide">
+    <div class="slide__inner">
+      <div class="eyebrow">What runs the program</div>
+      <h2 class="title">Four pieces. <span class="o">In this order.</span></h2>
+      <div class="grid" style="--cols:4">
+        <div class="card">
+          <div class="card__label">Piece</div>
+          <div class="card__num">01</div>
+          <div class="card__head">The calendar</div>
+          <div class="card__body">Seven fields per send: date, topic, owner, status, subject line, draft link, send list. If you cannot fill them, the email is not ready.</div>
+        </div>
+        <div class="card">
+          <div class="card__label">Piece</div>
+          <div class="card__num">02</div>
+          <div class="card__head">The content mix</div>
+          <div class="card__body">Five types rotated: method, story, resource roundup, product depth, soft offer. Ratio: 80 percent value, 20 percent sales.</div>
+        </div>
+        <div class="card">
+          <div class="card__label">Piece</div>
+          <div class="card__num">03</div>
+          <div class="card__head">The four-week rhythm</div>
+          <div class="card__body">Week 1 method. Week 2 story. Week 3 resource. Week 4 offer. Then start again. The team always knows what is next.</div>
+        </div>
+        <div class="card card--filled">
+          <div class="card__label">Piece</div>
+          <div class="card__num">04</div>
+          <div class="card__head">Evidence first. AI second.</div>
+          <div class="card__body">Real winners, past CTAs, sales objections, customer questions go in first. Then AI ideates on top. Reverse the order and you ship beautiful generic.</div>
+        </div>
+      </div>
+      <p class="grid-closer">Same team. Same number of sends. Different system. We have seen open rate go from 18 percent to mid-30s in five months on this rebuild alone.</p>
+    </div>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
+
+  <div class="slide">
+    <div class="slide__inner">
+      <div class="eyebrow">The numbers behind the rhythm</div>
+      <h2 class="title">Same effort. <span class="o">Different shape.</span></h2>
+      <div class="stats" style="--stat-cols:4">
+        <div class="stat">
+          <div class="stat__label">Calendar</div>
+          <div class="stat__val">7<span class="o">f</span></div>
+          <div class="stat__desc">Fields per planned send. Below this and the email is not ready.</div>
+        </div>
+        <div class="stat">
+          <div class="stat__label">Mix</div>
+          <div class="stat__val">5<span class="o">t</span></div>
+          <div class="stat__desc">Content types in rotation. Method, story, resource, depth, offer.</div>
+        </div>
+        <div class="stat">
+          <div class="stat__label">Ratio</div>
+          <div class="stat__val">80/<span class="o">20</span></div>
+          <div class="stat__desc">Value versus sales. Anything heavier on sales and the list unsubscribes.</div>
+        </div>
+        <div class="stat">
+          <div class="stat__label">Rhythm</div>
+          <div class="stat__val">4<span class="o">w</span></div>
+          <div class="stat__desc">The full cycle. Repeats. Removes the blank-page Friday panic.</div>
+        </div>
+      </div>
+      <div class="pq">"Evidence first. AI second. Otherwise you send beautifully written generic to an audience that spots it instantly."</div>
+    </div>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
+
+  <div class="slide insight">
+    <div class="slide__inner">
+      <div class="eyebrow">The transition into segmentation</div>
+      <h2 class="title">You have the system. <span class="o">Now: who do you send it to?</span></h2>
+      <p class="subhead">In our industry, segmentation gets interesting because you do not have a hundred thousand contacts. You have 800 in the best case. So how do you segment without slicing your list into pieces too small to matter?</p>
+    </div>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
+
+</section>
+
+<!-- ================== SECTION 3 ================== -->
+<section class="chapter" id="s3">
+
+  <div class="slide slide--dark opener">
+    <div class="accent-rect"></div>
+    <div class="section-no">02</div>
+    <div class="halftone-field" data-halftone="field"></div>
+    <div class="slide__inner">
+      <div class="eyebrow eyebrow--orange-on-dark">Part 02 · Segmentation</div>
+      <h2 class="title title--section">Five<br>dimensions.<br><span class="o">Not twelve.</span></h2>
+      <p class="subhead">Practical segmentation for technical B2B on a list that fits in your head.</p>
+    </div>
+    <span class="page-num">Part 02</span><span class="page-num-r">03 · Segmentation</span>
+  </div>
+
+  <div class="slide">
+    <div class="slide__inner">
+      <div class="eyebrow">The frame that survives a small list</div>
+      <h2 class="title">Five dimensions. <span class="o">Use only what drives different content.</span></h2>
+      <div class="grid" style="--cols:5">
+        <div class="card">
+          <div class="card__label">Dimension</div>
+          <div class="card__num">01</div>
+          <div class="card__head">Application</div>
+          <div class="card__body">Microscopy. Quantum optics. Telecom. Mechanobiology. Test &amp; measurement. Application fit beats everything else for most photonics buyers.</div>
+        </div>
+        <div class="card">
+          <div class="card__label">Dimension</div>
+          <div class="card__num">02</div>
+          <div class="card__head">Role</div>
+          <div class="card__body">Researcher, procurement, engineering manager, technical CTO, distributor. Same email. Different first paragraph.</div>
+        </div>
+        <div class="card">
+          <div class="card__label">Dimension</div>
+          <div class="card__num">03</div>
+          <div class="card__head">Journey stage</div>
+          <div class="card__body">Awareness, consideration, decision, customer, advocate. Same person can sit in different stages for different product lines.</div>
+        </div>
+        <div class="card">
+          <div class="card__label">Dimension</div>
+          <div class="card__num">04</div>
+          <div class="card__head">Source</div>
+          <div class="card__body">Web form. Trade show scan. LinkedIn. Webinar. Sales-added. Wildly different intent. A scan deserves a different first email than a referral.</div>
+        </div>
+        <div class="card card--filled">
+          <div class="card__label">Dimension</div>
+          <div class="card__num">05</div>
+          <div class="card__head">Engagement</div>
+          <div class="card__body">Opened, clicked, dormant, cold. The single most powerful segment in your whole list, and the one most companies do not actively use.</div>
+        </div>
+      </div>
+      <p class="grid-closer">Not all five are filled in for every contact. That is fine. Use what you have.</p>
+    </div>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
+
+  <div class="slide insight">
+    <div class="slide__inner">
+      <div class="eyebrow">The document that ends internal arguments</div>
+      <h2 class="title">The ICP Master. <span class="o">One page. Written once. Used forever.</span></h2>
+      <div class="insight-meta">
+        <div class="insight-meta__line"><span class="insight-meta__l">What lives on it</span>Who is your buyer? How do they describe their problem? What do they fear? What have they tried? How do they find you? What do you say? What do you never say?</div>
+        <div class="insight-meta__line"><span class="insight-meta__l">Why it matters</span>The document becomes the brain behind every email, every subject line, every CTA. Higher-leverage than any automation flow you can set up this quarter.</div>
+      </div>
+    </div>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
+
+</section>
+
+<!-- ================== SECTION 4 ================== -->
+<section class="chapter" id="s4">
+
+  <div class="slide slide--dark opener">
+    <div class="accent-rect"></div>
+    <div class="section-no">03</div>
+    <div class="halftone-field" data-halftone="field"></div>
+    <div class="slide__inner">
+      <div class="eyebrow eyebrow--orange-on-dark">Part 03 · Personalization</div>
+      <h2 class="title title--section">Beyond<br>the first<br><span class="o">name.</span></h2>
+      <p class="subhead">Four levers. Real specificity. The humanization checklist that protects your sender reputation.</p>
+    </div>
+    <span class="page-num">Part 03</span><span class="page-num-r">04 · Personalization</span>
+  </div>
+
+  <div class="slide slide--dark">
+    <div class="slide__inner">
+      <div class="eyebrow eyebrow--orange-on-dark">The four levers</div>
+      <h2 class="title">From easiest <span class="o">to hardest.</span> From broadest to most powerful.</h2>
+      <div class="grid" style="--cols:4">
+        <div class="card card--dark">
+          <div class="card__label">Lever 01 · Firmographic</div>
+          <div class="card__num">01</div>
+          <div class="card__head">Company shape</div>
+          <div class="card__body">Size, region, industry. Lab vs integrator vs research institution. Same product. Different first paragraph.</div>
+        </div>
+        <div class="card card--dark">
+          <div class="card__label">Lever 02 · Technographic</div>
+          <div class="card__num">02</div>
+          <div class="card__head">Their setup</div>
+          <div class="card__body">Detector, light source, control software, standards they have to meet. Lets the email read like a peer wrote it.</div>
+        </div>
+        <div class="card card--dark">
+          <div class="card__label">Lever 03 · Behavioral</div>
+          <div class="card__num">03</div>
+          <div class="card__head">What they did</div>
+          <div class="card__body">Opened, clicked, downloaded, visited the pricing page. Most underused source in photonics. Easiest to start collecting.</div>
+        </div>
+        <div class="card card--dark is-accent">
+          <div class="card__label">Lever 04 · Intent</div>
+          <div class="card__num">04</div>
+          <div class="card__head">Buying right now</div>
+          <div class="card__body">Two pricing-page visits this week. Three opens on one thread. New contact at the same company appears. Faster, more sales-oriented next step.</div>
+        </div>
+      </div>
+      <p class="grid-closer" style="color:rgba(255,255,255,0.75)">Start with firmographic plus behavioral. You are already ahead of 90 percent of the photonics industry.</p>
+    </div>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
+
+  <div class="slide slide--dark insight">
+    <div class="slide__inner">
+      <div class="eyebrow eyebrow--orange-on-dark">The honest definition</div>
+      <h2 class="title">Real personalization <span class="o">changes the message.</span> Not the merge tag.</h2>
+      <p class="subhead">"Hi {first_name}, our new product is here" is variable substitution. The reader's name in the subject line does not make the content of the email more relevant to them.</p>
+    </div>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
+
+  <div class="slide">
+    <div class="slide__inner">
+      <div class="eyebrow">When you let AI draft for a technical buyer</div>
+      <h2 class="title">The humanization checklist. <span class="o">Perfect timing.</span></h2>
+      <p class="subhead">Almost everyone is using AI to draft now. This is how you keep the final email from sounding generic.</p>
+      <div class="grid" style="--cols:5">
+        <div class="card">
+          <div class="card__label">Action 01</div>
+          <div class="card__num">01</div>
+          <div class="card__head">Strip the AI tells</div>
+          <div class="card__body">No "unlock", "leverage", "transform". No press-release rhythm. No three em dashes per sentence. If it sounds like a TED talk in an inbox, cut it.</div>
+        </div>
+        <div class="card">
+          <div class="card__label">Action 02</div>
+          <div class="card__num">02</div>
+          <div class="card__head">Add real specificity</div>
+          <div class="card__body">The application. The product spec. The exact use case. AI writes generic. You add specific.</div>
+        </div>
+        <div class="card">
+          <div class="card__label">Action 03</div>
+          <div class="card__num">03</div>
+          <div class="card__head">Check for hallucinations</div>
+          <div class="card__body">AI invents customer names, statistics, technical specs. Verify every concrete claim before send.</div>
+        </div>
+        <div class="card">
+          <div class="card__label">Action 04</div>
+          <div class="card__num">04</div>
+          <div class="card__head">Read it out loud</div>
+          <div class="card__body">If you would not say it on a call, do not send it.</div>
+        </div>
+        <div class="card card--filled">
+          <div class="card__label">Action 05</div>
+          <div class="card__num">05</div>
+          <div class="card__head">One human review</div>
+          <div class="card__body">Not for approval. For voice. Other humans catch what you cannot after an hour of staring at it.</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
+
+  <div class="slide slide--dark insight">
+    <div class="slide__inner">
+      <div class="eyebrow eyebrow--orange-on-dark">The warning to put on a sticker</div>
+      <h2 class="title">AI is very good <span class="o">at sounding personalized</span> while being generic.</h2>
+    </div>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
+
+  <!-- EXAMPLE 1 -->
+  <div class="slide">
+    <div class="slide__inner">
+      <div class="eyebrow">Example 01 · Fibre-coupled laser diode manufacturer</div>
+      <h2 class="title">From one-size-fits-all <span class="o">to two-segment.</span></h2>
+      <div class="two-col">
+        <div class="two-col__col two-col__col--left">
+          <div class="two-col__h">Before · One newsletter to 1,500</div>
+          <div class="two-col__t">Same monthly send to bioimaging and industrial sensing buyers.</div>
+          <ul class="two-col__list">
+            <li>Generic application examples</li>
+            <li>Generic spec language</li>
+            <li>Average CTR sitting flat</li>
+          </ul>
+        </div>
+        <div class="two-col__col two-col__col--right">
+          <div class="two-col__h">After · Two segments by application</div>
+          <div class="two-col__t">Two hours extra per send. Same cadence. 2.4× the click-through.</div>
+          <ul class="two-col__list">
+            <li>Bioimaging gets bioimaging cases</li>
+            <li>Industrial gets alignment tolerances</li>
+            <li>Same monthly rhythm</li>
+            <li>No new tools purchased</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
+
+  <!-- EXAMPLE 2 -->
+  <div class="slide">
+    <div class="slide__inner">
+      <div class="eyebrow">Example 02 · Brillouin spectroscopy company</div>
+      <h2 class="title">One behavioral trigger. <span class="o">6× the meeting bookings.</span></h2>
+      <div class="two-col">
+        <div class="two-col__col two-col__col--left">
+          <div class="two-col__h">Before · Generic follow-up sequence</div>
+          <div class="two-col__t">Anyone who downloaded any application note got the same five-email follow-up.</div>
+          <ul class="two-col__list">
+            <li>~1 percent booked a meeting</li>
+            <li>No use-case specificity</li>
+            <li>Generic CTA at the end</li>
+          </ul>
+        </div>
+        <div class="two-col__col two-col__col--right">
+          <div class="two-col__h">After · Use-case-triggered sequence</div>
+          <div class="two-col__t">Download the cell-mechanics application note, get the cell-mechanics sequence.</div>
+          <ul class="two-col__list">
+            <li>~6 percent booked a technical call</li>
+            <li>Right paper, right workflow</li>
+            <li>Same emails, different routing</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
+
+  <!-- POLL 2 -->
+  <div class="slide poll-slide">
+    <div class="slide__inner">
+      <div class="eyebrow">Audience pulse · Poll 02</div>
+      <div class="poll" data-poll-id="2" data-weights="14,30,38,18">
+        <p class="poll__q">What is the biggest blocker in your email marketing right now?</p>
+        <ul class="poll__options">
+          <li><button class="poll__opt" data-opt="A"><span class="bar"></span><span class="label">A. We do not have enough contacts</span><span class="pct"></span></button></li>
+          <li><button class="poll__opt" data-opt="B"><span class="bar"></span><span class="label">B. We do not know what to send them</span><span class="pct"></span></button></li>
+          <li><button class="poll__opt" data-opt="C"><span class="bar"></span><span class="label">C. We do not have time to build automations</span><span class="pct"></span></button></li>
+          <li><button class="poll__opt" data-opt="D"><span class="bar"></span><span class="label">D. We cannot measure if any of it works</span><span class="pct"></span></button></li>
         </ul>
-      </div>
-
-      <div class="pillar">
-        <div class="pillar-num"><span class="num">3</span>Packaging</div>
-        <h4>Repackage the posts</h4>
-        <p>Apply the system. Pace the cadence. Shift CTAs from outbound to inbound.</p>
-        <ul>
-          <li>Weekly steady cadence - kill bursts and silences</li>
-          <li>Cap body-text links: one in-post, the rest go to comments</li>
-          <li>Shift to discussion-driven CTAs (examples below)</li>
-          <li>Light QC pass on every post: tags, hashtags, alt text, names</li>
-        </ul>
-      </div>
-
-    </div>
-
-    <div class="cta-examples">
-      <div class="lbl">Worked example · CTAs</div>
-      <h4>Stop sending people away. Start asking them to stay.</h4>
-      <div class="cta-pair">
-        <div class="cta-side bad">
-          <div class="head">Off-platform · what EPA does now</div>
-          <p class="ex">Check out our latest report here.</p>
-          <p class="ex">Fill out this form to register.</p>
-          <p class="ex">Read more on our website.</p>
-        </div>
-        <div class="cta-side good">
-          <div class="head">Discussion-driven · what to shift to</div>
-          <p class="ex">What's your take - is kerbside management a city or operator problem?</p>
-          <p class="ex">Where does your association stand on APDS adoption?</p>
-          <p class="ex">Have you seen this play out in your market? Drop a note below.</p>
-        </div>
+        <p class="poll-live-note">Run this as a Kahoot or Slido question, or ask people to answer A-D in chat.</p>
       </div>
     </div>
-  </section>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
 
-  <section>
-    <div class="channel-divider">
-      <div class="num">02</div>
-      <div class="meta">
-        <div class="lbl">Channel Two</div>
-        <div class="ttl">europeanparking.eu</div>
-      </div>
-      <div class="scope">
-        Reviewed<strong>Full site · WordPress CMS</strong>
+</section>
+
+<!-- ================== SECTION 5 ================== -->
+<section class="chapter" id="s5">
+
+  <div class="slide slide--dark opener">
+    <div class="accent-rect"></div>
+    <div class="section-no">04</div>
+    <div class="halftone-field" data-halftone="field"></div>
+    <div class="slide__inner">
+      <div class="eyebrow eyebrow--orange-on-dark">Part 04 · Automation</div>
+      <h2 class="title title--section">Four flows.<br>Not<br><span class="o">forty.</span></h2>
+      <p class="subhead">Welcome. Nurture. Trade show. Webinar follow-up. Plus the do-not-send triple lock.</p>
+    </div>
+    <span class="page-num">Part 04</span><span class="page-num-r">05 · Automation</span>
+  </div>
+
+  <div class="slide">
+    <div class="slide__inner">
+      <div class="eyebrow">The flows that actually pay back</div>
+      <h2 class="title">Build these four. <span class="o">Skip the rest until they run reliably.</span></h2>
+      <div class="grid" style="--cols:4">
+        <div class="card">
+          <div class="card__label">Flow 01</div>
+          <div class="card__num">01</div>
+          <div class="card__head">Welcome</div>
+          <div class="card__body">1 to 2 emails over 10 to 14 days. First one within 24 hours, while the request is still fresh. Re-use your past winners.</div>
+        </div>
+        <div class="card">
+          <div class="card__label">Flow 02</div>
+          <div class="card__num">02</div>
+          <div class="card__head">Nurture</div>
+          <div class="card__body">2 to 4 emails over 4 to 6 weeks, behavior-branched. End cleanly. No fake one-to-one phrases on a sequence with no signal.</div>
+        </div>
+        <div class="card">
+          <div class="card__label">Flow 03</div>
+          <div class="card__num">03</div>
+          <div class="card__head">Trade show</div>
+          <div class="card__body">Pre-show 3 to 4 weeks. Quiet during. Post-show within 48 hours for priority. The 6 weeks around the show are the campaign.</div>
+        </div>
+        <div class="card card--filled">
+          <div class="card__label">Flow 04</div>
+          <div class="card__num">04</div>
+          <div class="card__head">Webinar follow-up</div>
+          <div class="card__body">Three audiences: attended, registered-not-shown, recording viewers. Three flows. One convergence point.</div>
+        </div>
       </div>
     </div>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
 
-    <div class="section-header" style="margin-top: 32px;">
-      <div class="section-number">02.1</div>
-      <div class="section-title">
-        <div class="eyebrow">The diagnosis · Website</div>
-        <h2>A database <span class="accent">that wants to be a portal</span></h2>
-        <p class="subtitle">The website holds enormous content depth and institutional credibility. The barrier isn't substance - it's structure, hierarchy, and how that depth is presented.</p>
+  <div class="slide">
+    <div class="slide__inner">
+      <div class="eyebrow">The shape of a working program</div>
+      <h2 class="title">The numbers <span class="o">to build to.</span></h2>
+      <div class="stats" style="--stat-cols:4">
+        <div class="stat">
+          <div class="stat__label">Welcome</div>
+          <div class="stat__val">24<span class="o">h</span></div>
+          <div class="stat__desc">First email within 24 hours. Full flow inside 10 to 14 days.</div>
+        </div>
+        <div class="stat">
+          <div class="stat__label">Nurture</div>
+          <div class="stat__val">2-<span class="o">4</span></div>
+          <div class="stat__desc">Emails over 4 to 6 weeks. Behavior-branched. Then move on.</div>
+        </div>
+        <div class="stat">
+          <div class="stat__label">Trade show</div>
+          <div class="stat__val">6<span class="o">w</span></div>
+          <div class="stat__desc">Campaign window around a 3-day event. Pre, during, post.</div>
+        </div>
+        <div class="stat">
+          <div class="stat__label">Do-not-send rules</div>
+          <div class="stat__val">3<span class="o">×</span></div>
+          <div class="stat__desc">Workflow rule. Non-marketing flag. Manual list. Use all three.</div>
+        </div>
+      </div>
+      <div class="pq">"One day a contact will slip through one do-not-send layer. They will not slip through all three. Build the triple lock."</div>
+    </div>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
+
+  <div class="slide insight">
+    <div class="slide__inner">
+      <div class="eyebrow">Transition</div>
+      <h2 class="title">You have the flows. <span class="o">Now: where this all lives.</span></h2>
+      <p class="subhead">CRM is where most marketing teams I meet are quietly drowning. Let me give you a way to think about it that is simpler than any CRM vendor will tell you.</p>
+    </div>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
+
+</section>
+
+<!-- ================== SECTION 6 ================== -->
+<section class="chapter" id="s6">
+
+  <div class="slide slide--dark opener">
+    <div class="accent-rect"></div>
+    <div class="section-no">05</div>
+    <div class="halftone-field" data-halftone="field"></div>
+    <div class="slide__inner">
+      <div class="eyebrow eyebrow--orange-on-dark">Part 05 · CRM</div>
+      <h2 class="title title--section">The data<br>layer.<br><span class="o">Not the destination.</span></h2>
+      <p class="subhead">Three jobs the CRM has to do. The platform debate is mostly noise.</p>
+    </div>
+    <span class="page-num">Part 05</span><span class="page-num-r">06 · CRM</span>
+  </div>
+
+  <div class="slide">
+    <div class="slide__inner">
+      <div class="eyebrow">What the CRM has to do for email</div>
+      <h2 class="title">Three jobs. <span class="o">Nail these and the tool stops mattering.</span></h2>
+      <div class="grid" style="--cols:3">
+        <div class="card">
+          <div class="card__label">Job 01</div>
+          <div class="card__num">01</div>
+          <div class="card__head">Source of truth for contact properties</div>
+          <div class="card__body">Application tags, role, lifecycle stage, source, last engagement. If CRM and email platform disagree, you have a data problem. Fix it there first.</div>
+        </div>
+        <div class="card">
+          <div class="card__label">Job 02</div>
+          <div class="card__num">02</div>
+          <div class="card__head">Feed segments dynamically</div>
+          <div class="card__body">No CSV exports. Segments live in the CRM. Email platform reads them in real time. A sync, not a one-way push.</div>
+        </div>
+        <div class="card card--filled">
+          <div class="card__label">Job 03</div>
+          <div class="card__num">03</div>
+          <div class="card__head">Track engagement back to contact</div>
+          <div class="card__body">When sales looks at a prospect they should see the last 90 days of opens, clicks, content engaged. Without this, sales quietly stops trusting marketing data.</div>
+        </div>
       </div>
     </div>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
 
-    <div class="two-col">
-
-      <div class="col-channel">
-        <div class="col-header">
-          <h3>What's already working</h3>
-          <div class="tag">Keep</div>
+  <div class="slide">
+    <div class="slide__inner">
+      <div class="eyebrow">Honest read on the tools</div>
+      <h2 class="title">Pick what you will <span class="o">actually use.</span></h2>
+      <div class="two-col">
+        <div class="two-col__col two-col__col--left">
+          <div class="two-col__h">Under 5,000 contacts · team of 1 to 3</div>
+          <div class="two-col__t">Brevo is fine for now.</div>
+          <ul class="two-col__list">
+            <li><b>Brevo</b> · cheaper, simpler, lighter automation. Good entry point.</li>
+            <li><b>ActiveCampaign</b> · stronger automation than Mailchimp, lighter than HubSpot.</li>
+            <li><b>Mailchimp</b> · fine for newsletters and simple sends, but limited for serious B2B lifecycle work.</li>
+          </ul>
         </div>
-
-        <div class="finding">
-          <svg class="finding-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3,9 7,13 15,5"/></svg>
-          <div class="finding-text"><strong>Looks legitimate and European-level.</strong> The institutional positioning lands immediately. There's no credibility gap to close.</div>
+        <div class="two-col__col two-col__col--right">
+          <div class="two-col__h">Over 5,000 · sales lives in a CRM all day</div>
+          <div class="two-col__t">HubSpot is usually the best value once you want a real system.</div>
+          <ul class="two-col__list">
+            <li><b>HubSpot</b> · our default recommendation for teams moving beyond beginner tools.</li>
+            <li>Roughly 60 euros per seat can cover forms, email sends, tracking, deals, and useful CRM data.</li>
+            <li>Best value when someone owns the data hygiene and the team actually uses it.</li>
+          </ul>
         </div>
-        <div class="finding">
-          <svg class="finding-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3,9 7,13 15,5"/></svg>
-          <div class="finding-text"><strong>Deep content volume.</strong> Working groups, parking data initiatives, APDS, European Parking Card, conferences, ESG themes. The depth is real.</div>
-        </div>
-        <div class="finding">
-          <svg class="finding-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3,9 7,13 15,5"/></svg>
-          <div class="finding-text"><strong>Strong topical authority.</strong> Industry-specific terminology, structured thematic areas, real sector expertise visible across pages.</div>
-        </div>
-        <div class="finding">
-          <svg class="finding-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3,9 7,13 15,5"/></svg>
-          <div class="finding-text"><strong>Mobile basics hold.</strong> No major bugs, the site behaves on phones - even if scannability needs work.</div>
-        </div>
-      </div>
-
-      <div class="col-channel">
-        <div class="col-header">
-          <h3>Where it leaks</h3>
-          <div class="tag warn">Fix</div>
-        </div>
-
-        <div class="finding">
-          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
-          <div class="finding-text"><strong>Menu overload.</strong> Too many first-level items, repeated terminology, hard to scan. The navigation is the single biggest barrier on the site.</div>
-        </div>
-        <div class="finding">
-          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
-          <div class="finding-text"><strong>Homepage is a feed, not a landing page.</strong> Reads like a content river with an association description on top. No focused CTAs, no audience routing, weak visual hierarchy.</div>
-        </div>
-        <div class="finding">
-          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
-          <div class="finding-text"><strong>No journey for different audiences.</strong> Operators, municipalities, policymakers, media and members all land on the same homepage. None is guided to what they need.</div>
-        </div>
-        <div class="finding">
-          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
-          <div class="finding-text"><strong>Visual design feels template-driven.</strong> Dead space on the sides, dated typography, no differentiation between pages, no clear H1/H2/H3 hierarchy - content reads as undifferentiated plain text.</div>
-        </div>
-        <div class="finding">
-          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
-          <div class="finding-text"><strong>Imagery is generic stock.</strong> Real photos are low-resolution. There's no mobility-tech visual language - no smart city, EV charging, or urban mobility imagery anchoring the mission.</div>
-        </div>
-        <div class="finding">
-          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
-          <div class="finding-text"><strong>News, events, publications presented as flat lists.</strong> No card layouts, no filters, no search. Users have to scroll through everything to find what they need.</div>
-        </div>
-        <div class="finding">
-          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
-          <div class="finding-text"><strong>No engagement funnels.</strong> No clear membership funnel, no newsletter strategy, no conference funnel, no Working Groups CTA. The site doesn't ask the visitor to do anything.</div>
-        </div>
-        <div class="finding">
-          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
-          <div class="finding-text"><strong>Compliance gaps.</strong> No visible cookie consent banner during testing. No privacy policy despite forms collecting user data. Configuration should be reviewed.</div>
-        </div>
-        <div class="finding">
-          <svg class="finding-icon warn" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="3" x2="9" y2="11"/><circle cx="9" cy="14" r="1" fill="currentColor"/></svg>
-          <div class="finding-text"><strong>SEO depth is wasted.</strong> Strong content volume and structured thematic areas, but pages feel structurally similar to crawlers, and internal linking opportunities go unused.</div>
-        </div>
-
       </div>
     </div>
-  </section>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
 
-  <section>
-    <div class="section-header">
-      <div class="section-number">02.2</div>
-      <div class="section-title">
-        <div class="eyebrow">The fix · Website</div>
-        <h2>Three workstreams <span class="accent">for the website</span></h2>
-        <p class="subtitle">Same logic as the LinkedIn fix: split a fuzzy redesign brief into three concrete tracks.</p>
+  <div class="slide insight">
+    <div class="slide__inner">
+      <div class="eyebrow">The small habit that compounds</div>
+      <h2 class="title">The Campaign Learning Repository. <span class="o">Four lines per campaign. Forever.</span></h2>
+      <div class="insight-meta">
+        <div class="insight-meta__line"><span class="insight-meta__l">What you write</span>Write the hypothesis before the send: audience, offer, expected behavior. Afterward: what worked, what did not, what you would try next. Two paragraphs max.</div>
+        <div class="insight-meta__line"><span class="insight-meta__l">Why it pays</span>Most photonics teams lose their campaign knowledge every quarter. A clear hypothesis turns each campaign into a reusable learning loop instead of another one-off send.</div>
       </div>
     </div>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
 
-    <div class="pillars">
+</section>
 
-      <div class="pillar">
-        <div class="pillar-num"><span class="num">1</span>Architecture</div>
-        <h4>Simplify the navigation</h4>
-        <p>Cut the menu down to what matters. Move depth to where depth belongs.</p>
-        <ul>
-          <li>6 main menu items: About / Initiatives / Insights / Events & Awards / Membership / Contact</li>
-          <li>Sub-topics (Working Groups, ESG, APDS, Parking Data) become structured landing pages</li>
-          <li>Mega menu pattern for first-level navigation</li>
-          <li>Full menu in the footer - not the header</li>
-        </ul>
-      </div>
+<!-- ================== SECTION 7 ================== -->
+<section class="chapter" id="s7">
 
-      <div class="pillar">
-        <div class="pillar-num"><span class="num">2</span>Hierarchy</div>
-        <h4>Rebuild the homepage</h4>
-        <p>From content feed to strategic landing page. Guide visitors, don't drown them.</p>
-        <ul>
-          <li>Audience routing: cards for operators, cities, policymakers, members, media</li>
-          <li>Key focus areas surfaced visually, not buried in text</li>
-          <li>Clear visual differentiation: news vs events vs magazine vs newsletter</li>
-          <li>Featured item or highlighted news above the fold</li>
-          <li>Focused CTAs: Become a Member · Join an EPA Event · Subscribe to Updates</li>
-        </ul>
-      </div>
-
-      <div class="pillar">
-        <div class="pillar-num"><span class="num">3</span>Polish</div>
-        <h4>Modernise and tighten</h4>
-        <p>Visual language, compliance, content presentation. The polish that makes depth feel premium.</p>
-        <ul>
-          <li>Mobility-tech imagery: smart city, EV charging, urban mobility, conferences (real photos in HQ)</li>
-          <li>Card systems for news, publications, events - with search and filters</li>
-          <li>Typography hierarchy: clear H1, H2, H3, body, callouts</li>
-          <li>Cookie banner, privacy policy, GDPR review</li>
-          <li>Internal linking strategy to unlock SEO depth</li>
-        </ul>
-      </div>
-
+  <div class="slide slide--dark opener">
+    <div class="accent-rect"></div>
+    <div class="section-no">06</div>
+    <div class="halftone-field" data-halftone="field"></div>
+    <div class="slide__inner">
+      <div class="eyebrow eyebrow--orange-on-dark">Part 06 · Compliance and Deliverability</div>
+      <h2 class="title title--section">The boring<br>part that<br><span class="o">protects everything.</span></h2>
+      <p class="subhead">GDPR, ePrivacy, the country reality, the 2026 deliverability stack.</p>
     </div>
-  </section>
+    <span class="page-num">Part 06</span><span class="page-num-r">07 · Compliance</span>
+  </div>
 
-  <div class="closing">
-    <div class="eyebrow">The shift</div>
-    <h2>From documenting activity <span class="gold">to packaging authority.</span></h2>
-    <p class="closing-tagline">
-      EPA's foundation is right. The next step is making the channels easier to recognise, faster to read, and more confident in their point of view.
-    </p>
-    <div class="diamond-divider" style="margin-top: 56px;">
-      <div class="line" style="background: rgba(255,255,255,0.2);"></div>
-      <div class="diamond" style="background: rgba(255,255,255,0.3);"></div>
-      <div class="diamond gold"></div>
-      <div class="diamond" style="background: rgba(255,255,255,0.3);"></div>
-      <div class="line" style="background: rgba(255,255,255,0.2);"></div>
+  <div class="slide slide--dark">
+    <div class="slide__inner">
+      <div class="eyebrow eyebrow--orange-on-dark">The country reality, simplified</div>
+      <h2 class="title">Cold B2B email <span class="o">is country-specific.</span> Plan by jurisdiction.</h2>
+      <div class="grid" style="--cols:4">
+        <div class="card card--dark">
+          <div class="card__label">UK</div>
+          <div class="card__num">01</div>
+          <div class="card__head">Most relaxed market</div>
+          <div class="card__body">Under PECR, corporate subscribers are mostly exempt from the consent rule. Email UK businesses with relative freedom. Easy unsubscribe required.</div>
+        </div>
+        <div class="card card--dark">
+          <div class="card__label">France</div>
+          <div class="card__num">02</div>
+          <div class="card__head">Reasonable for B2B</div>
+          <div class="card__body">If the outreach is genuinely professional in context. Email them about their job, not personal interests. Right to object must be clear.</div>
+        </div>
+        <div class="card card--dark is-accent">
+          <div class="card__label">Germany</div>
+          <div class="card__num">03</div>
+          <div class="card__head">The hardest in Europe</div>
+          <div class="card__body">UWG sets a very high bar for "presumed interest". Technically possible, brutal relevance test, real fines. Slow down and be precise.</div>
+        </div>
+        <div class="card card--dark">
+          <div class="card__label">Rest of EU</div>
+          <div class="card__num">04</div>
+          <div class="card__head">Country by country</div>
+          <div class="card__body">Soft opt-in only for existing customers and similar goods. Does not cover new prospects. Check the local DPA before scaling outreach.</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
+
+  <div class="slide">
+    <div class="slide__inner">
+      <div class="eyebrow">Five things every B2B email needs</div>
+      <h2 class="title">Regardless of country. <span class="o">Every send.</span></h2>
+      <p class="subhead">In tools like HubSpot, set these once in the footer and reuse them automatically.</p>
+      <div class="grid" style="--cols:5">
+        <div class="card">
+          <div class="card__label">Element 01</div>
+          <div class="card__num">01</div>
+          <div class="card__head">Clear unsubscribe</div>
+          <div class="card__body">Not buried in the footer. Something the reader can find at a glance.</div>
+        </div>
+        <div class="card">
+          <div class="card__label">Element 02</div>
+          <div class="card__num">02</div>
+          <div class="card__head">Physical address</div>
+          <div class="card__body">Your registered company address. Real, current, complete.</div>
+        </div>
+        <div class="card">
+          <div class="card__label">Element 03</div>
+          <div class="card__num">03</div>
+          <div class="card__head">Sender identity</div>
+          <div class="card__body">Who is sending this. What company. No clever pseudonyms.</div>
+        </div>
+        <div class="card">
+          <div class="card__label">Element 04</div>
+          <div class="card__num">04</div>
+          <div class="card__head">Privacy policy link</div>
+          <div class="card__body">Direct link to your current policy. Not the homepage.</div>
+        </div>
+        <div class="card card--filled">
+          <div class="card__label">Element 05</div>
+          <div class="card__num">05</div>
+          <div class="card__head">A reason</div>
+          <div class="card__body">Why you are emailing this person. Especially cold. "I am reaching out because you are listed as the technical lead for X" goes a long way.</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
+
+  <div class="slide slide--dark">
+    <div class="slide__inner">
+      <div class="eyebrow eyebrow--orange-on-dark">The 2026 deliverability stack</div>
+      <h2 class="title">Beautiful emails go to spam <span class="o">when the plumbing is half-done.</span></h2>
+      <div class="stats" style="--stat-cols:5">
+        <div class="stat">
+          <div class="stat__label">Authentication</div>
+          <div class="stat__val">SP<span class="o">F</span></div>
+          <div class="stat__desc">Sender Policy Framework. Records list authorized sending hosts.</div>
+        </div>
+        <div class="stat">
+          <div class="stat__label">Signing</div>
+          <div class="stat__val">DKI<span class="o">M</span></div>
+          <div class="stat__desc">Cryptographic signature on every send. Must point to the current provider.</div>
+        </div>
+        <div class="stat">
+          <div class="stat__label">Policy</div>
+          <div class="stat__val">DMAR<span class="o">C</span></div>
+          <div class="stat__desc">Start at p=none. Progress to p=quarantine or p=reject within months.</div>
+        </div>
+        <div class="stat">
+          <div class="stat__label">Unsubscribe</div>
+          <div class="stat__val">1-<span class="o">click</span></div>
+          <div class="stat__desc">RFC 8058 List-Unsubscribe headers. Required by Google, Yahoo, Microsoft.</div>
+        </div>
+        <div class="stat">
+          <div class="stat__label">Complaint rate</div>
+          <div class="stat__val">&lt;0.3<span class="o">%</span></div>
+          <div class="stat__desc">Enforcement kicks in here. Safe target below 0.1 percent.</div>
+        </div>
+      </div>
+      <div class="pq" style="background:rgba(255,255,255,0.06)">"A 30-minute technical fix lifted one team's open rate from 12 percent back to 24 percent. They had lost a year of reach to a broken DKIM record."</div>
+    </div>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
+
+  <div class="slide insight">
+    <div class="slide__inner">
+      <div class="eyebrow">The closer for compliance</div>
+      <h2 class="title">Get the plumbing right. <span class="o">Or beautiful emails go in the spam folder.</span></h2>
+    </div>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
+
+</section>
+
+<!-- ================== SECTION 8 ================== -->
+<section class="chapter" id="s8">
+
+  <div class="slide slide--dark opener">
+    <div class="accent-rect"></div>
+    <div class="section-no">07</div>
+    <div class="halftone-field" data-halftone="field"></div>
+    <div class="slide__inner">
+      <div class="eyebrow eyebrow--orange-on-dark">Part 07 · Cross-channel</div>
+      <h2 class="title title--section">Email<br>is not<br><span class="o">alone.</span></h2>
+      <p class="subhead">Three loops that make every channel work harder than it would on its own.</p>
+    </div>
+    <span class="page-num">Part 07</span><span class="page-num-r">08 · Cross-channel</span>
+  </div>
+
+  <div class="slide">
+    <div class="slide__inner">
+      <div class="eyebrow">Three loops that matter</div>
+      <h2 class="title">Connect the channels <span class="o">and each one works harder.</span></h2>
+      <div class="grid" style="--cols:3">
+        <div class="card">
+          <div class="card__label">Loop 01</div>
+          <div class="card__num">01</div>
+          <div class="card__head">LinkedIn ↔ Email</div>
+          <div class="card__body">A winning LinkedIn post warms a list when you offer the next-step content. A winning email becomes a LinkedIn post. Different audience. Second life out of one piece of work.</div>
+        </div>
+        <div class="card">
+          <div class="card__label">Loop 02</div>
+          <div class="card__num">02</div>
+          <div class="card__head">Email → Paid</div>
+          <div class="card__body">Engaged email contacts are your cheapest paid audience. Retargeting is the baseline best practice in digital advertising: start with people who clicked an email in the last 30 days.</div>
+        </div>
+        <div class="card card--filled">
+          <div class="card__label">Loop 03</div>
+          <div class="card__num">03</div>
+          <div class="card__head">Engagement → Sales</div>
+          <div class="card__body">Rule: 2 qualifying actions in 72 hours fires a sales alert. The hard part is not the technology. It is getting sales and marketing to agree what counts as a spike.</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
+
+  <div class="slide insight">
+    <div class="slide__inner">
+      <div class="eyebrow">The rule to write down</div>
+      <h2 class="title">Two qualifying actions in 72 hours. <span class="o">Sales gets an alert that day.</span></h2>
+      <p class="subhead">Monitor engagement across email, LinkedIn, and paid. Pricing visit, application note download, two opens on one thread, or multiple people from the same company engaging in 72 hours should alert sales that day.</p>
+    </div>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
+
+</section>
+
+<!-- ================== SECTION 9 ================== -->
+<section class="chapter" id="s9">
+
+  <div class="slide">
+    <div class="slide__inner">
+      <div class="eyebrow">Closing · Monday morning</div>
+      <h2 class="title">What to do Monday. <span class="o">What to stop today.</span></h2>
+      <div class="two-col">
+        <div class="two-col__col two-col__col--left">
+          <div class="two-col__h">This week · Do these</div>
+          <ul class="two-col__list" style="margin-top:0">
+            <li><b>01 · Write a one-page ICP Master.</b> Two hours. Used forever.</li>
+            <li><b>02 · Start a Campaign Learning Repository.</b> Four lines per past campaign, retrospectively.</li>
+            <li><b>03 · Pick one high-intent content asset.</b> Define the follow-up before the next send.</li>
+            <li><b>04 · Build a welcome flow.</b> 1 to 2 emails, 10 to 14 days, first within 24 hours.</li>
+            <li><b>05 · Set up one behavioral trigger.</b> One piece of content, one follow-up sequence. Start small.</li>
+          </ul>
+        </div>
+        <div class="two-col__col two-col__col--right">
+          <div class="two-col__h">Today · Stop these</div>
+          <ul class="two-col__list" style="margin-top:0">
+            <li><b>01 · Stop generating content calendars from AI with no evidence input.</b> Evidence first. AI second.</li>
+            <li><b>02 · Stop calling first-name personalization "personalization".</b> Use the four levers. Even one is a real upgrade.</li>
+            <li><b>03 · Stop letting current customers receive prospecting sequences.</b> Workflow rule. Non-marketing flag. Manual list. All three.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
+
+  <div class="slide insight">
+    <div class="slide__inner">
+      <div class="eyebrow">Why this is the work we do</div>
+      <h2 class="title">Most photonics companies are <span class="o">not bad at marketing.</span> They are sporadic.</h2>
+      <p class="subhead">Great products, expert teams, email programs neglected because marketing is the third or fourth priority. Digital Alley runs the operating system, keeps the calendar moving, sets up the automation, measures what is working, feeds it back into the next campaign. For photonics, optics, lasers, and deep-tech across the world.</p>
+    </div>
+    <div class="slide__footer"><div class="brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div><div class="footer-right"><span class="pill">A Live Session</span></div></div>
+  </div>
+
+  <!-- CLOSING CTA -->
+  <div class="slide slide--dark cta">
+    <div class="halftone-field" data-halftone="field"></div>
+    <div class="slide__inner">
+      <div class="eyebrow eyebrow--orange-on-dark">Get in touch</div>
+      <h2 class="title">Let's <span class="o">engineer</span><br>your next program.</h2>
+      <div class="cta-divider"></div>
+      <div class="cta-contacts">
+        <div><div class="cta-c__l">Email</div><div class="cta-c__v">go@digitalalley.agency</div></div>
+        <div><div class="cta-c__l">Web</div><div class="cta-c__v">digitalalley.agency</div></div>
+        <div><div class="cta-c__l">Phone</div><div class="cta-c__v">+32 2 897 89 90</div></div>
+        <div><div class="cta-c__l">Headquarters</div><div class="cta-c__v">Ambiorix Square 7<br>1000 Brussels</div></div>
+      </div>
     </div>
   </div>
 
-  <div class="footer">
-    <div>The Right Street · Brussels · Be Heard</div>
-    <div>Prepared May 2026 · <a href="mailto:info@therightstreet.eu">hello@therightstreet.digital</a></div>
+  <!-- Q&A slide -->
+  <div class="slide qa">
+    <div class="qa-logo brand"><img class="brand-logo" src="da-logo-transparent.png" alt="Digital Alley"></div>
+    <div class="slide__inner">
+      <div class="qa-eyebrow">Open floor</div>
+      <h2 class="qa-mark"><span class="q">Q</span><span class="amp">&amp;</span><span class="a">A.</span></h2>
+      <div class="qa-prompts">
+        <div class="qa-prompt">
+          <div class="qa-prompt__l">Prompt 01</div>
+          <div class="qa-prompt__b">What did we miss?</div>
+        </div>
+        <div class="qa-prompt">
+          <div class="qa-prompt__l">Prompt 02</div>
+          <div class="qa-prompt__b">Which one of the five Monday actions could you actually start this week?</div>
+        </div>
+      </div>
+    </div>
+    <div class="qa-thanks">Thank you · Digital Alley</div>
   </div>
 
+  <!-- Q&A appendix -->
+  <div class="qa-list">
+    <div class="qa-eyebrow">Appendix · Likely questions</div>
+    <h3>Q&amp;A prep · short answers ready.</h3>
+    <ol>
+      <li><div class="q">We have a small list. Is it worth doing all this?</div><div class="a">The smaller the list, the more each email matters. A 500-contact list with a working welcome flow and a 4-week rhythm outperforms a 5,000-contact list that gets one Christmas card a year. Small list, high quality, high intent is exactly the case where this approach works best.</div></li>
+      <li><div class="q">We do not have HubSpot. Can we still do this?</div><div class="a">Yes. Brevo, ActiveCampaign, and even Mailchimp can do most of this. The tool matters less than the discipline. Pick a tool you will actually use, and stop platform shopping.</div></li>
+      <li><div class="q">How do you measure success?</div><div class="a">For technical B2B email, the four metrics that matter are: delivered rate, open rate, click rate, and meetings booked or leads progressed to sales. Everything else is noise.</div></li>
+      <li><div class="q">What about AI agents that write emails for me?</div><div class="a">They are useful for first drafts. They are dangerous for final sends. The humanization checklist is what keeps the final send usable. If you trust an AI agent to send unedited copy to a PhD audience, you will burn your sender reputation.</div></li>
+      <li><div class="q">How long until we see results?</div><div class="a">First improvements in open and click rates within 30 to 60 days. Meaningful lead-quality changes within 90 to 120 days. Compounding effects after 6 to 9 months.</div></li>
+      <li><div class="q">GDPR and cold email in Germany?</div><div class="a">Be very careful. Either work with a legal advisor or do not do cold outbound in Germany. The risk-to-reward ratio is bad for SMEs.</div></li>
+      <li><div class="q">Can we use ChatGPT to generate the welcome flow content?</div><div class="a">For draft. Not for final. Use real winners as the source content. AI helps with phrasing and tightening, not with deciding what gets sent.</div></li>
+      <li><div class="q">How often should we send to our main list?</div><div class="a">For technical B2B with a 500 to 5,000 contact list, every 2 weeks is a good baseline. Weekly if you have the content discipline. Monthly is too infrequent to maintain top-of-mind.</div></li>
+    </ol>
+  </div>
+
+</section>
+
+</main>
+
+<div class="credit">
+  <span>EPIC ONLINE MEETING · EMAIL MARKETING III · 2026-05-29</span>
+  <span>Digital Alley</span>
 </div>
+
+<script>
+  // ============ HALFTONE DOT GENERATORS ============
+  function genWave(svg){
+    // sparse-to-dense wave shape, smile curve at the bottom of the cover
+    const W = 1200, H = 500;
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    svg.setAttribute('preserveAspectRatio','none');
+    const cols = 80, rows = 22;
+    const cellW = W / cols, cellH = H / rows;
+    const r = 2.4;
+    let out = '';
+    for (let y = 0; y < rows; y++){
+      for (let x = 0; x < cols; x++){
+        const xn = x / (cols - 1);
+        const yn = y / (rows - 1);
+        // curve: center at y = 0.55, with falloff
+        const waveCenter = 0.62 - 0.18 * Math.sin(xn * Math.PI);
+        const distFromBand = Math.abs(yn - waveCenter);
+        const density = Math.max(0, 1 - (distFromBand * 3.2));
+        // also fade at far edges horizontally
+        const edgeFade = 1 - Math.pow(Math.abs(xn - 0.5) * 1.85, 4);
+        const p = density * Math.max(0, edgeFade) * 0.95;
+        if (Math.random() < p){
+          const cx = x * cellW + cellW * 0.5;
+          const cy = y * cellH + cellH * 0.5;
+          out += `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${r}" fill="#E84A2A"/>`;
+        }
+      }
+    }
+    svg.innerHTML = out;
+  }
+
+  function genField(svg){
+    // diffuse ambient field for section openers - dense bottom band + scattered
+    const W = 1200, H = 700;
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    svg.setAttribute('preserveAspectRatio','none');
+    const cols = 60, rows = 35;
+    const cellW = W / cols, cellH = H / rows;
+    const r = 2.1;
+    let out = '';
+    for (let y = 0; y < rows; y++){
+      for (let x = 0; x < cols; x++){
+        const xn = x / (cols - 1);
+        const yn = y / (rows - 1);
+        // mid-band bulge + lower density
+        const band = Math.max(0, 1 - Math.pow((yn - 0.62) * 2.2, 2));
+        const corners = (xn < 0.25 || xn > 0.75) ? 0.5 : 0.0;
+        const ambient = 0.12;
+        const p = (band * 0.7 + corners * 0.4 + ambient) * 0.55;
+        if (Math.random() < p){
+          const cx = x * cellW + cellW * 0.5;
+          const cy = y * cellH + cellH * 0.5;
+          out += `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${r}" fill="#E84A2A" opacity="0.92"/>`;
+        }
+      }
+    }
+    svg.innerHTML = out;
+  }
+
+  document.querySelectorAll('[data-halftone]').forEach(el => {
+    const kind = el.getAttribute('data-halftone');
+    const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+    svg.style.width = '100%';
+    svg.style.height = '100%';
+    el.appendChild(svg);
+    if (kind === 'wave') genWave(svg);
+    else if (kind === 'field') genField(svg);
+  });
+
+  // ============ POLLS ============
+  document.querySelectorAll('.poll').forEach(poll => {
+    const weights = (poll.dataset.weights || '25,25,25,25').split(',').map(n => parseInt(n,10));
+    const opts = Array.from(poll.querySelectorAll('.poll__opt'));
+    const resetBtn = poll.querySelector('[data-reset]');
+
+    function jitter(arr){
+      // small per-session jitter so it feels alive
+      return arr.map(w => Math.max(2, w + Math.round((Math.random() - 0.5) * 8)));
+    }
+
+    function vote(myIdx){
+      let dist = jitter(weights);
+      // boost the user's choice a bit so it feels acknowledged
+      dist[myIdx] += 4;
+      const total = dist.reduce((a,b) => a+b, 0);
+      const pcts = dist.map(d => Math.round(d / total * 100));
+      // normalize rounding
+      let diff = 100 - pcts.reduce((a,b) => a+b, 0);
+      pcts[myIdx] += diff;
+      opts.forEach((opt, i) => {
+        opt.classList.add('is-voted');
+        if (i === myIdx) opt.classList.add('is-mine');
+        opt.querySelector('.bar').style.width = pcts[i] + '%';
+        opt.querySelector('.pct').textContent = pcts[i] + '%';
+      });
+    }
+
+    opts.forEach((opt, i) => {
+      opt.addEventListener('click', () => {
+        if (opts.some(o => o.classList.contains('is-voted'))) return;
+        vote(i);
+      });
+    });
+
+    resetBtn && resetBtn.addEventListener('click', () => {
+      opts.forEach(o => {
+        o.classList.remove('is-voted','is-mine');
+        o.querySelector('.bar').style.width = '0%';
+        o.querySelector('.pct').textContent = '';
+      });
+    });
+  });
+
+  // ============ NAV ACTIVE STATE ============
+  const sections = document.querySelectorAll('section.chapter');
+  const navLinks = document.querySelectorAll('.nav-sections a');
+  const dots = document.querySelectorAll('#navDots span');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting){
+        const id = e.target.id;
+        const idx = parseInt(id.replace('s',''),10) - 1;
+        navLinks.forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === '#' + id));
+        dots.forEach((d,i) => d.classList.toggle('is-active', i === idx));
+      }
+    });
+  }, { rootMargin: '-30% 0px -65% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
 
 </body>
 </html>
